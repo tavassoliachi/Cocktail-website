@@ -1,0 +1,17 @@
+.cont{
+    margin-top: 40px;
+    display: flex;
+    flex-direction: row;
+}
+.cont > img{
+    margin-left: 50px;
+    width:500px;
+    border-radius: 20px;
+}
+.drinkName{
+    font-weight: 600;
+    color: #2b2a2a;
+}
+.detailCont{
+    margin-left: 30px;
+}
