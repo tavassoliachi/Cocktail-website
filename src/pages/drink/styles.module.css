@@ -1,0 +1,37 @@
+.cont{
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    padding:0 200px;
+}
+.cont > img{
+    width:800px;
+}
+.drinkName{
+    font-weight: 600;
+    font-family: Lusitana,Georgia,serif;
+    font-weight: 400;
+    font-size: 3rem;
+    /* padding-left: 25px; */
+    margin:20px 0 0 0 ;
+}
+.detailCont{
+    margin-left: 30px;
+}
+.subDetails{
+    display: flex;
+    flex-direction: row;
+}
+.subDetails >*{
+    margin-right:15px;
+    padding-right: 20px;
+}
+.subDetails :nth-child(1){
+    border-right:2px dotted black;
+}
+.longDescr{
+width:750px;
+/* padding-left: 100px;    */
+font-family: Lusitana,Georgia,serif;
+font-size: 1.5rem; 
+}

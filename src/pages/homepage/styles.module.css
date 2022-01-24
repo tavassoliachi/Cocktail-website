@@ -1,0 +1,212 @@
+:root{
+    --textColor1:#9EC4D7;
+}
+.title{
+    margin-top: 100px;
+    text-align: center;
+    font-weight:500;
+    font-size: 2.25rem;
+    text-transform: uppercase;
+    font-family: Georgia,serif;
+}
+.drinksCont{
+    display:flex;
+    flex-direction:row;
+    flex-wrap:wrap;
+    /* width:100%; */
+    justify-content:center;
+    padding-bottom: 70px;
+    padding:0 15%;
+}
+.link{
+    text-decoration: none;
+    text-align: center;
+    color: #3f3d3d;
+    font-weight: 500;
+}
+.drink{
+    margin:20px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+}
+.drinkCat{
+    font-family: Helvetica,sans-serif;
+    font-size:0.9rem;
+    line-height: 30px;
+    font-weight: 800;
+    color:var(--textColor1);
+    text-transform: uppercase;
+}
+.cocktailCat{
+    font-family: Georgia,serif;
+    font-size: .75rem;
+    letter-spacing: .05rem;
+    line-height: 30px;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-top: 1px;
+}
+.cocktailTitle{
+    font-family: Georgia,serif;
+    font-weight: 400;
+    font-size: 1.375rem;
+    line-height: 1.1;
+    color:black;
+}
+.drinkTitle{
+    font-family: Georgia,serif;
+    font-weight: 500;
+    font-size: 1.4rem;
+    color:white;
+}
+.descr{
+    padding-left: 50px;
+    font-family:Helvetica,sans-serif;
+    font-size: 1rem;
+    text-transform: uppercase;
+    color: var(--textColor1);
+    width:200px;
+}
+.descr::before{
+    background-image: url("../assets/arrow.png");
+    content: '';
+    height: 0.95rem;
+    width: 2.575rem;
+    position: absolute;
+    display: inline-block;
+    left: 0;
+    background-repeat: no-repeat;
+    background-size:contain;
+}
+.descrTitle::before{
+    background:url("../assets/shaker.PNG") ;
+    content: '';
+    height: 7rem;
+    width: 5.2rem;
+    display: block;
+    transform: translate(-10px,-10px);
+    background-repeat: no-repeat;
+    background-size:contain;
+    margin:auto;
+}
+.descr2{
+    width:320px;
+    color:white;
+    text-align: center;
+    font-family: Georgia,serif;
+    font-size: 1.125rem;
+    line-height: 1.25rem;
+}
+.descrTitle{
+    text-align: center;
+    font-family: Helvetica,sans-serif;
+    color:var(--textColor1);
+    font-size: 1rem;
+    /* transform: translateX(-12px); */
+    width:'max-content'
+}
+.email::placeholder{
+    font-size: 1rem;
+    color:black;
+    /* padding-left: 40px; */
+}
+.email{
+    box-sizing: border-box;
+    padding-left: 40px;
+    height:40px;
+    width:305px;
+}
+
+.email:focus{
+    outline: none;
+}
+.signUp{
+    margin-top: 10px;
+    width:305px;
+    height: 40px; 
+    background-color: #265986;
+    border:none;
+    color:white;
+    font-size: 1rem;
+    font-weight: bold;
+}
+.randomSection{
+    background-color: var(--mainBlue);
+    padding-bottom: 50px;
+}
+.showMore{
+    width:300px;
+    height:50px;
+    margin-top: 70px;
+    background-color: #265986;
+    border:none;
+    color:white;
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+.drinkImg{
+    width:270px;
+}
+.mainRanDrink{
+    display:flex;
+    flex-direction:row;
+    justify-content:center;
+    width:100%;
+    box-sizing:border-box;
+    padding:0 50px;
+}
+.borderDiv{
+    width:max-content;
+    border-right:2.5px dotted white;
+    width:50%;
+    box-sizing:border-box;
+    display:flex;
+    justify-content:flex-end;
+    padding-right:23px;
+}
+.borderDiv >div{
+    display: flex;
+    flex-direction: column;
+}
+.card{
+    background-color:white;
+    padding:1rem;
+    width:max-content;
+    box-sizing:border-box 
+}
+.card >img{
+    width: 572px;
+    height:572px;
+}
+.ranImages{
+    width: 50%;
+    padding-left: 23px;
+}
+.ranCard{
+    background-color:white;
+    padding:1rem;
+    height:max-content;
+    box-sizing:border-box;
+}
+.bottomSection{
+   display:flex;
+   flex-direction:row;
+   justify-content:flex-start;
+   margin-top:70px;
+   width:100%;
+}
+.contact{
+    position:relative;
+    margin-top:50px;
+    width:max-content;
+    margin-left:30px;
+}
+.inputCont{
+    position:relative;
+    margin-left:10px;
+    width:max-content;
+    display:flex;
+    flex-direction:column
+}
