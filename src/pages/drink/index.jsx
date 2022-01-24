@@ -9,6 +9,7 @@ export default function Drink() {
         const queryParams = new URLSearchParams(window.location.search)
         const id = queryParams.get("id")
         dispatch(fetchSingleDrink(id))
+        window.scrollTo(0, 0)
     },[])
 
     const drink = useSelector((el)=>{return el.singleDrinkData.data})
