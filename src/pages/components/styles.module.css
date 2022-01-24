@@ -1,0 +1,42 @@
+@font-face {
+    font-family: Roboto;
+    src: url("https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap");
+  }
+  :root {
+    --mainBlue: #06273A;
+  }
+
+.header{
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    height: 80px;
+    background: linear-gradient(#000 0,#031621 64.2%,#06273A 100%);
+}
+
+.category{
+    margin:15px 100px;
+    font-size: 23px;
+    font-weight: normal;
+    color:#3f3d3d;
+    font-family: Roboto;
+    cursor: pointer;
+
+}
+.activeCategory{
+    color:red
+}
+
+.drink:hover{
+    transform: translate(5px,-2px);
+}
+
+
+
+.webTitle{
+    margin:25px 100px;
+    font-size: 43px;
+    font-weight: normal;
+    color:#3f3d3d;
+    font-family: Roboto;
+}
