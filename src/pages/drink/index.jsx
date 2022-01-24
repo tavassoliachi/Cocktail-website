@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { fetchSingleDrink } from '../../redux/actions/fetchActions';
 import styles from "./styles.module.css"
 import { useDispatch, useSelector } from 'react-redux';
