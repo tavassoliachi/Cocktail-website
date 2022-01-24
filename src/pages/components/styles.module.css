@@ -26,13 +26,36 @@
 .activeCategory{
     color:red
 }
-
+.drinksCont{
+    display:flex;
+    flex-direction:row;
+    flex-wrap:wrap;
+    width:100%;
+    justify-content:center;
+    padding-bottom: 70px;
+}
 .drink:hover{
     transform: translate(5px,-2px);
 }
-
-
-
+.drink{
+    width:250px;
+    box-shadow: 2px 3px 2px 1px #EDEDED;
+    margin:20px;
+    padding:0 10px;
+}
+.link{
+    text-decoration: none;
+    text-align: center;
+    color: #3f3d3d;
+    font-weight: 500;
+}
+.title{
+    text-align: center;
+    font-weight: 500;
+    font-size: 45px;
+    color: #3f3d3d;
+    text-transform: uppercase;
+}
 .webTitle{
     margin:25px 100px;
     font-size: 43px;
