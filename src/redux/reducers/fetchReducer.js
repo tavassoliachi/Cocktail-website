@@ -63,3 +63,19 @@ export const randomDrinkData = (state={},action) => {
             return state
     }
 }
+export const searchData = (state={},action) => {
+    switch(action.type){
+        case "Success_searchDrink":
+            return {
+                    data: action.payload,
+                    error: ""
+            }
+        case "Fail_searchDrink":
+            return {
+                data: [],
+                error: action.error
+            }
+        default:
+            return state
+    }
+}

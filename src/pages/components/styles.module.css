@@ -63,3 +63,15 @@
     color:#3f3d3d;
     font-family: Roboto;
 }
+.search {
+    position: absolute;
+    right:100px;
+    z-index:2;
+    cursor: pointer;
+}
+.searchInput{
+    position: absolute;
+    right:100px;
+    height:20px;
+    width:180px;
+}

@@ -1,4 +1,4 @@
-import {alcoholic, nonAlcoholic,singleDrink,randomDrink} from "../consts/drinkTypes"
+import {alcoholic, nonAlcoholic,singleDrink,randomDrink,searchDrink} from "../consts/drinkTypes"
 import axios from "axios"
 import { baseUrl } from "../../utils/baseUrl"
 export const fetchDrinks = (type) => async (dispatch) => {
@@ -31,6 +31,14 @@ export const fetchRandomDrinks = (n) => async (dispatch) => {
         dispatch({type:"Success_randomDrink",payload:drinks})
     }else{
         dispatch({type:"Fail_randomDrink",message:"Error"})
+    }
+}
+export const fetchSearchResult = (keyword) => async (dispatch) =>{
+    const {data,error} = await axios.get(`${baseUrl + searchDrink+keyword}`)
+    if(data){
+        dispatch({type:"Success_searchDrink",payload:data.drinks})
+    }else{
+        dispatch({type:"Fail_searchDrink",error:error})
     }
 }
 
