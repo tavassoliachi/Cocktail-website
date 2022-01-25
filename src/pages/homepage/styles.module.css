@@ -13,10 +13,11 @@
     display:flex;
     flex-direction:row;
     flex-wrap:wrap;
-    /* width:100%; */
+    width:100%;
     justify-content:center;
+    padding:0 10%;
+    box-sizing: border-box;
     padding-bottom: 70px;
-    padding:0 15%;
 }
 .link{
     text-decoration: none;
@@ -25,11 +26,12 @@
     font-weight: 500;
 }
 .drink{
-    margin:20px;
+    margin:17px;
     display: flex;
     justify-content: flex-start;
-    align-items: center;
+    /* align-items: center; */
     flex-direction: column;
+    width: 250px;
 }
 .drinkCat{
     font-family: Helvetica,sans-serif;
@@ -70,7 +72,7 @@
     width:200px;
 }
 .descr::before{
-    background-image: url("../assets/arrow.png");
+    background-image: url("../../assets/arrow.png");
     content: '';
     height: 0.95rem;
     width: 2.575rem;
@@ -81,7 +83,7 @@
     background-size:contain;
 }
 .descrTitle::before{
-    background:url("../assets/shaker.PNG") ;
+    background:url("../../assets/shaker.PNG") ;
     content: '';
     height: 7rem;
     width: 5.2rem;

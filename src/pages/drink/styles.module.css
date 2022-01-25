@@ -35,3 +35,27 @@ width:750px;
 font-family: Lusitana,Georgia,serif;
 font-size: 1.5rem; 
 }
+.stepsTitle{
+    margin-top: 40px;
+    font-size: 2.5rem;
+    font-weight: 600;
+    width:60%;
+    border-bottom: dotted;
+    padding-bottom: 5px;
+}
+.steps{
+    font-weight: 300;
+    padding-left: 30px;
+    font-size: 20px;
+    position: relative;
+}
+.steps::before{
+    content: "";
+    position: absolute;
+    left:0;
+    top:34%;
+    width:10px;
+    height:10px;
+    background-color: brown;
+    transform: rotate(45deg);
+}

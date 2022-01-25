@@ -12,7 +12,7 @@ export default function Drink() {
     },[])
     const drink = useSelector((el)=>{return el.singleDrinkData.data})
   return <div className={styles.cont}>
-            <img src={`${drink?.strDrinkThumb}`}/>
+            <img src={`${drink?.strDrinkThumb}`} alt=''/>
             <div className={styles.detailCont}>
                 <h1 className={styles.drinkName}>{drink?.strDrink}</h1>
                 <h2 className={styles.drinkName}>Category: {drink?.strCategory}</h2>

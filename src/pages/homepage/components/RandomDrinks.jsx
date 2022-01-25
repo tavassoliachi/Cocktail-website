@@ -1,40 +1,43 @@
 import React from 'react';
 import MailOutlineIcon from '@mui/icons-material/MailOutline';
-import toolsIMG from "../../assets/tools.png"
+import toolsIMG from "../../../assets/tools.png"
 import styles from "../styles.module.css"
-export default function RandomDrinks({randomDrinks}) {
+import { Link } from 'react-router-dom';
+import CircularProgress from '@mui/material/CircularProgress';
+export default function RandomDrinks({randomDrinks,loading}) {
   return <div>
+      {loading ? <div style={{display:'flex',justifyContent:'center'}}><div><CircularProgress /></div></div>:
       <div className={styles.mainRanDrink}>
               <div className={styles.borderDiv}>
-                <div>
+                <Link to={`/drink?id=${randomDrinks[0].idDrink}`} className={styles.link} style={{textAlign:"left"}}>
                     <div className={styles.card}>
-                            <img src={randomDrinks[0].strDrinkThumb} />
+                            <img src={randomDrinks[0].strDrinkThumb} alt='random drink'/>
                     </div>
                     <p className={styles.drinkCat}>{randomDrinks[0].strCategory}</p>
                     <span className={styles.drinkTitle}>{randomDrinks[0].strDrink}</span>
-                </div>
+                </Link>
               </div>
             
             <div className={styles.ranImages}>
                 <div style={{display:'flex',flexDirection:"row",boxSizing:"border-box"}}>
-                    <div>
+                    <Link to={`/drink?id=${randomDrinks[1].idDrink}`} className={styles.link} style={{textAlign:"left"}}>
                         <div style={{marginRight:'50px'}} className={styles.ranCard}> 
-                            <img src={randomDrinks[1].strDrinkThumb} style={{width:"257px",height:"257px"}}/>
+                            <img src={randomDrinks[1].strDrinkThumb} style={{width:"257px",height:"257px"}} alt='random drink'/>
                         </div>
                         <p className={styles.drinkCat}>{randomDrinks[1].strCategory}</p>
                         <span className={styles.drinkTitle}>{randomDrinks[1].strDrink}</span>
-                    </div>
-                    <div>
+                    </Link>
+                    <Link to={`/drink?id=${randomDrinks[0].idDrink}`} className={styles.link} style={{textAlign:"left"}}>
                         <div  className={styles.ranCard}>
-                            <img src={randomDrinks[2].strDrinkThumb} style={{width:"257px",height:"257px"}}/>
+                            <img src={randomDrinks[2].strDrinkThumb} style={{width:"257px",height:"257px"}} alt='random Drink'/>
                         </div>
                         <p className={styles.drinkCat}>{randomDrinks[2].strCategory}</p>
                         <span className={styles.drinkTitle}>{randomDrinks[2].strDrink}</span>
-                    </div>
+                    </Link>
                 </div>
                     <div className={styles.bottomSection}>
                         <div>
-                            <img src={toolsIMG} />
+                            <img src={toolsIMG} alt='tools'/>
                             <div style={{position:"relative",borderRight:"2.5px dotted white",width:"max-content"}}>
                                 <h1 className={styles.descr}>Home Bar Basics: Everything You Need to Know About Strainers</h1>
                             </div>
@@ -52,5 +55,6 @@ export default function RandomDrinks({randomDrinks}) {
 
             </div>
           </div>
+          }
   </div>;
 }

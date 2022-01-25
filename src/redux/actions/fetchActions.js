@@ -1,44 +1,54 @@
-import {alcoholic, nonAlcoholic,singleDrink,randomDrink,searchDrink} from "../consts/drinkTypes"
-import axios from "axios"
-import { baseUrl } from "../../utils/baseUrl"
+import {alcoholicURL, nonAlcoholicURL,singleDrinkURL,randomDrinkURL,searchDrinkURL} from "../consts/drinkUrls"
+import { alcoholic,nonAlcoholic,sigleDrink,randomDrink,search } from "../consts/reducerType"
+import { api } from "../../utils/api"
 export const fetchDrinks = (type) => async (dispatch) => {
 
     var url = ''
+    var success,fail,request
     switch (type){
         case "alcoholic":
-            url = alcoholic
+            url = alcoholicURL
+            success = alcoholic.success
+            fail=alcoholic.fail
+            request=alcoholic.request
             break
         case "nonAlcoholic":
-            url = nonAlcoholic
+            url = nonAlcoholicURL
+            success=nonAlcoholic.success
+            fail=nonAlcoholic.fail
+            request=nonAlcoholic.request
             break
     }
-    await axios.get(`${baseUrl +url}`).then(response => dispatch({type:`Success_${type}`,payload:response.data.drinks}))
-    .catch(error => dispatch({type:`Fail_${type}`,message:`${error}`}))
+
+    const {data,error} = await api.get(`${url}`)
+    data ? dispatch({type:`${success}`,payload:data}) : dispatch({type:`${fail}`,message:error})
 
 }
 export const fetchSingleDrink = (id) => async (dispatch) => {
-    await axios.get(`${baseUrl+singleDrink+id}`).then(response => dispatch({type:`Success_singleDrink`,payload:response.data}))
-    .catch(error => dispatch({type:`Fail_singleDrink`,message:`${error}`}))
-
+    dispatch({type:`${sigleDrink.request}`})
+    const {data} = await api.get(`${singleDrinkURL+id}`)
+    data.drinks?.length ? dispatch({type:`${sigleDrink.success}`,payload:data}) : dispatch({type:`${sigleDrink.fail}`,message:'error'})
 }
 export const fetchRandomDrinks = (n) => async (dispatch) => {
     var drinks = []
+    dispatch({type:`${randomDrink.request}`})
     while(drinks.length!==n){
-        const {data} = await axios.get(`${baseUrl + randomDrink}`)
+        const {data} = await api.get(`${randomDrinkURL}`)
         drinks.push(data.drinks[0])
     }
     if(drinks.length === n){
-        dispatch({type:"Success_randomDrink",payload:drinks})
+        dispatch({type:`${randomDrink.success}`,payload:drinks})
     }else{
-        dispatch({type:"Fail_randomDrink",message:"Error"})
+        dispatch({type:`${randomDrink.fail}`,message:"Error"})
     }
 }
 export const fetchSearchResult = (keyword) => async (dispatch) =>{
-    const {data,error} = await axios.get(`${baseUrl + searchDrink+keyword}`)
+    dispatch({type:`${search.request}`})
+    const {data,error} = await api.get(`${searchDrinkURL+keyword}`)
     if(data){
-        dispatch({type:"Success_searchDrink",payload:data.drinks})
+        dispatch({type:`${search.success}`,payload:data.drinks})
     }else{
-        dispatch({type:"Fail_searchDrink",error:error})
+        dispatch({type:`${search.fail}`,error:error})
     }
 }
 

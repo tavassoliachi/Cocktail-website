@@ -1,13 +1,20 @@
+import { alcoholic,nonAlcoholic,sigleDrink,randomDrink,search } from "../consts/reducerType"
 export const alcoholicData = (state={},action) => {
     switch(action.type){
-        case "Success_alcoholic":
+        case alcoholic.request:
+            return {
+                    loading:true,
+            }
+        case alcoholic.success:
             return {
                     data: action.payload,
+                    loading:false,
                     error: ""
             }
-        case "Fail_alcoholic":
+        case alcoholic.fail:
             return {
                 data: {},
+                loading:false,
                 error: action.error
             }
         default:
@@ -16,14 +23,20 @@ export const alcoholicData = (state={},action) => {
 }
 export const nonAlcoholicData = (state={},action) => {
     switch(action.type){
-        case "Success_nonAlcoholic":
+        case nonAlcoholic.request:
+            return {
+                    loading:true,
+            }
+        case nonAlcoholic.success:
             return {
                     data: action.payload,
+                    loading:false,
                     error: ""
             }
-        case "Fail_nonAlcoholic":
+        case nonAlcoholic.Fail:
             return {
                 data: {},
+                loading:false,
                 error: action.error
             }
         default:
@@ -31,15 +44,22 @@ export const nonAlcoholicData = (state={},action) => {
     }
 }
 export const singleDrinkData = (state={},action) => {
+    console.log('-',action.payload)
     switch(action.type){
-        case "Success_singleDrink":
+        case sigleDrink.request:
             return {
-                    data: action.payload?.drinks[0],
+                    loading:true,
+            }
+        case sigleDrink.success:
+            return {
+                    data: action.payload.drinks[0],
+                    loading:false,
                     error: ""
             }
-        case "Fail_singleDrink":
+        case sigleDrink.fail:
             return {
-                data: {},
+                data: undefined,
+                loading:false,
                 error: action.error
             }
         default:
@@ -49,14 +69,20 @@ export const singleDrinkData = (state={},action) => {
 export const randomDrinkData = (state={},action) => {
 
     switch(action.type){
-        case "Success_randomDrink":
+        case randomDrink.request:
+            return {
+                    loading:true,
+            }
+        case randomDrink.success:
             return {
                     data: action.payload,
+                    loading:false,
                     error: ""
             }
-        case "Fail_randomDrink":
+        case randomDrink.fail:
             return {
                 data: state.data,
+                loading:false,
                 error: action.error
             }
         default:
@@ -65,14 +91,20 @@ export const randomDrinkData = (state={},action) => {
 }
 export const searchData = (state={},action) => {
     switch(action.type){
-        case "Success_searchDrink":
+        case search.request:
+            return {
+                    loading:true,
+            }
+        case search.success:
             return {
                     data: action.payload,
+                    loading:false,
                     error: ""
             }
-        case "Fail_searchDrink":
+        case search.fail:
             return {
                 data: [],
+                loading:false,
                 error: action.error
             }
         default:
