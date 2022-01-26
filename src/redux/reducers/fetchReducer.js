@@ -1,4 +1,4 @@
-import { alcoholic,nonAlcoholic,sigleDrink,randomDrink,search } from "../consts/reducerType"
+import { alcoholic,nonAlcoholic,singleDrink,randomDrink,search,ingredient } from "../consts/reducerType"
 export const alcoholicData = (state={},action) => {
     switch(action.type){
         case alcoholic.request:
@@ -44,23 +44,27 @@ export const nonAlcoholicData = (state={},action) => {
     }
 }
 export const singleDrinkData = (state={},action) => {
-    console.log('-',action.payload)
     switch(action.type){
-        case sigleDrink.request:
+        case singleDrink.request:
             return {
                     loading:true,
+                    data:{}
             }
-        case sigleDrink.success:
+        case singleDrink.success:
             return {
                     data: action.payload.drinks[0],
                     loading:false,
-                    error: ""
+                    error: ''
             }
-        case sigleDrink.fail:
+        case singleDrink.fail:
             return {
                 data: undefined,
                 loading:false,
                 error: action.error
+            }
+        case singleDrink.erase:
+            return {
+                data:{}
             }
         default:
             return state
@@ -102,6 +106,29 @@ export const searchData = (state={},action) => {
                     error: ""
             }
         case search.fail:
+            return {
+                data: [],
+                loading:false,
+                error: action.error
+            }
+        default:
+            return state
+    }
+}
+export const ingredientsData = (state={},action) => {
+    switch(action.type){
+        case ingredient.request:
+            return {
+                    loading:true,
+                    data:{}
+            }
+        case ingredient.success:
+            return {
+                    data: action.payload,
+                    loading:false,
+                    error: ""
+            }
+        case ingredient.fail:
             return {
                 data: [],
                 loading:false,

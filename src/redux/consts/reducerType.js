@@ -8,10 +8,11 @@ export const nonAlcoholic = {
     success:"Success_nonAlcoholic",
     fail:"Fail_nonAlcoholic"
 }
-export const sigleDrink = {
+export const singleDrink = {
     request:"Request_singleDrink",
     success:"Success_singleDrink",
-    fail:"Fail_singleDrink"
+    fail:"Fail_singleDrink",
+    erase:"Erase_singleDrink"
 }
 export const randomDrink = {
     request:"Request_randomDrink",
@@ -22,4 +23,9 @@ export const search = {
     request:"Request_searchDrink",
     success:"Success_searchDrink",
     fail:"Fail_searchDrink"
+}
+export const ingredient = {
+    request:"Request_ingredient",
+    success:"Success_ingredient",
+    fail:"Fail_ingredient"
 }

@@ -1,5 +1,5 @@
-import {alcoholicURL, nonAlcoholicURL,singleDrinkURL,randomDrinkURL,searchDrinkURL} from "../consts/drinkUrls"
-import { alcoholic,nonAlcoholic,sigleDrink,randomDrink,search } from "../consts/reducerType"
+import {alcoholicURL, nonAlcoholicURL,singleDrinkURL,randomDrinkURL,searchDrinkURL, ingredientURL} from "../consts/drinkUrls"
+import { alcoholic,nonAlcoholic,singleDrink,randomDrink,search,ingredient } from "../consts/reducerType"
 import { api } from "../../utils/api"
 export const fetchDrinks = (type) => async (dispatch) => {
 
@@ -21,13 +21,13 @@ export const fetchDrinks = (type) => async (dispatch) => {
     }
 
     const {data,error} = await api.get(`${url}`)
-    data ? dispatch({type:`${success}`,payload:data}) : dispatch({type:`${fail}`,message:error})
+    data ? dispatch({type:`${success}`,payload:data}) : dispatch({type:`${fail}`,message:'Error,could not fetch drinks.'})
 
 }
 export const fetchSingleDrink = (id) => async (dispatch) => {
-    dispatch({type:`${sigleDrink.request}`})
-    const {data} = await api.get(`${singleDrinkURL+id}`)
-    data.drinks?.length ? dispatch({type:`${sigleDrink.success}`,payload:data}) : dispatch({type:`${sigleDrink.fail}`,message:'error'})
+    dispatch({type:`${singleDrink.request}`})
+    const {data,error} = await api.get(`${singleDrinkURL+id}`)
+    data.drinks?.length ? dispatch({type:`${singleDrink.success}`,payload:data}) : dispatch({type:`${singleDrink.fail}`,message:`Error,could not fetch drink with id ${id}`})
 }
 export const fetchRandomDrinks = (n) => async (dispatch) => {
     var drinks = []
@@ -50,6 +50,16 @@ export const fetchSearchResult = (keyword) => async (dispatch) =>{
     }else{
         dispatch({type:`${search.fail}`,error:error})
     }
+}
+export const fetchIngredient = (ingredients) =>  async (dispatch) =>{
+    dispatch({type:`${ingredient.request}`})
+    var dataArr = []
+    for (const el in ingredients){
+        const {data} = await api.get(`${ingredientURL + ingredients[el]}`)
+        dataArr.push(data.ingredients[0])
+    }
+    dataArr.length ? dispatch({type:`${ingredient.success}`,payload:dataArr}) : dispatch({type:`${ingredient.fail}`,error:"error"})
+    
 }
 
 

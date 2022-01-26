@@ -12,7 +12,6 @@ export default function Homepage() {
     const dispatch = useDispatch()
     const alc = useSelector((data)=>{return data.alcoholicData})
     const alcData = alc?.data?.drinks
-    alcData && console.log(alc)
     const alcLoading = alc?.loading
 
     const nonAlc = useSelector((data)=>{return data.nonAlcoholicData})
@@ -35,7 +34,7 @@ export default function Homepage() {
 
     <div className={styles.randomSection} >
         <div style={{width:"100%",display:'flex',justifyContent:"center",allignItems:'center',marginBottom:"20px"}}>
-            <img src={image1} style={{width:'500px',transform:"translateX(-5px)"}} alt=''/>
+            <img src={image1} style={{width:'70%',maxHeight:"150px",objectFit:"contain",transform:"translateX(-5px)"}} alt=''/>
         </div>
         
         {randomDrinksData && ( <RandomDrinks randomDrinks={randomDrinksData} loading={randomDrinksLoading}/> )}

@@ -1,23 +1,32 @@
-import React, { useEffect } from 'react';
-import { fetchSingleDrink } from '../../redux/actions/fetchActions';
+import React, { useEffect,useState } from 'react';
+import { fetchSingleDrink, } from '../../redux/actions/fetchActions';
 import styles from "./styles.module.css"
 import { useDispatch, useSelector } from 'react-redux';
 import CircularProgress from '@mui/material/CircularProgress';
-import {Link} from "react-router-dom"
+import {Link} from "react-router-dom";
+import Ingredients from './components/ingredients';
+import { singleDrink } from '../../redux/consts/reducerType';
 export default function Drink() {
+    
     const dispatch = useDispatch()
-
+    const queryParams = new URLSearchParams(window.location.search)
+    const id = queryParams.get("id")
     useEffect(()=>{
-        const queryParams = new URLSearchParams(window.location.search)
-        const id = queryParams.get("id")
+
         dispatch(fetchSingleDrink(id))
         window.scrollTo(0, 0)
+        return  ()=> {
+            dispatch({type:`${singleDrink.erase}`})
+        }
     },[])
+
     const drinkDATA = useSelector((el)=>{return el.singleDrinkData})
     const drink = drinkDATA.data
     const loading = drinkDATA.loading
+    const [lang,setLang] = useState("strInstructions")
+    const instructions = drink && Object.keys(drink).filter((el)=>el.includes('strInstructions'))
 
-    const keys = drink && Object.keys(drink)
+
   return <div className={styles.cont}>
                 {loading ? <div style={{display:"flex",justifyContent:"center"}}><CircularProgress/></div> : 
                 drink ?
@@ -28,40 +37,30 @@ export default function Drink() {
                             <p className={styles.subDetails}>By David Wondrich</p>
                             <p>Updated 01/2/22</p>
                         </div>
-                    <img src={`${drink?.strDrinkThumb}`} alt=''/>
-                    <p className={styles.longDescr}>
-                        There are all types of drinkers in this world. Some people like their drinks sweet, fruity and fun. Others prefer something smooth and civilized, without too much kick. Then there are the ones who want things to be simple, square-jawed and, well, boozy. I fall in that last category, and for most of the year that’s not a problem. Just give me an Old Fashioned and I’m fine: whiskey, a dot of sugar, a couple dashes of bitters, ice and lemon peel. Simple. Tasty.
-                        Come winter, though, when I’ve been trudging through the snow or otherwise freezing my ears off, who wants ice? A Hot Toddy is what I crave: whiskey, sugar, boiling water and maybe a sliver of lemon peel. That’s what “toddy” used to mean, anyway. Unfortunately, it has somehow come to mean just about everything but that. Step up to the bar and order one, and you’re likely to end up with a mess of boiled cider, honey, every spice McCormick makes, two or three different liqueurs and, somewhere deep down at the bottom, a tiny speck of whiskey. While there’s nothing wrong with drinking that, it would be nice to be able to get something without all the frills. If only we called it something different...
-                        Featured Video
-                        DRAAANKS Hot Toddy
-                        Fortunately, there is another name for a traditional toddy: a Whisky Skin. Back in the daguerreotype days, that’s what it was called, the “skin” part coming from the lemon peel and the “whisky” part meaning they liked it best with Scotch. It used to be quite popular, too. No wonder—back then, all the Scotch was pure malt; rich, heady stuff that could stand up to a little sugar, water and a lemon peel with no problem at all. Is it just me or do you feel a chill coming on?
-                    </p>
-                    <div>
-                        <div className={styles.stepsTitle}>Ingredients</div>
-                        {
-                        keys?.filter((el)=>el.includes("strIngredient")).map((el,index)=>
-                            {
-                                return drink[el] && <h1 className={styles.steps}>{drink[el]} - {drink[`strMeasure${index+1}`]}</h1>
+                    <div className={styles.details}>
+                        <img src={`${drink?.strDrinkThumb}`} style={{width:'40%'}} alt=''/>
+                        <div style={{display:'flex',flexDirection:"column",width:"100%",marginLeft:"40px",justifyContent:"flex-start"}}>
+                            {drink && <Ingredients drink={drink}/>}
 
-                            })
-        
-                        }
-                    </div>
-                    {drink &&
-                    <div>
-                        <div className={styles.stepsTitle}>Instructions</div>
-                        <h1 className={styles.steps} style={{width:'60%'}}>{drink.strInstructions}</h1>
-                    </div>
-                    }
-                </>
+                            <div>
+                                <div className={styles.stepsTitle}>Instructions</div>
+                            {instructions.map((el)=>{
+                                const active = lang==el
+                                return <>
+                                <button disabled={!drink[el]} className={styles.langBtn} style={active ? {backgroundColor:"black",color:"white"} : {backgroundColor:"white",color:'black'}} onClick={()=>setLang(el)}>{el !== 'strInstructions' ? el.substring('strInstructions'.length) : "ENG"}</button>
+                                </>
+                            })}
+
+                            <h1 className={styles.steps} style={{width:'60%'}}>{drink[lang]}</h1>
+                            </div>
+                        </div>
+                </div></>
                 :
                 <div style={{width:"100%",display:"flex",justifyContent:"center",flexDirection:"column"}}>
-                    <h1 style={{width:'100%',textAlign:"center",fontWeight:"600"}}>Drink was not found</h1>
+                    <h1 style={{width:'100%',textAlign:"center",fontWeight:"600"}}>{`Drink with id ${id} was not found`}</h1>
                     <Link style={{margin:'auto',textDecoration:'none'}} to="/"><button style={{backgroundColor:"#06273A",color:'white',border:"none",width:"100px",height:"40px",borderRadius:"2px",cursor:"pointer"}}>Home</button></Link>
                 </div>
                 }
-                
-            
 
             
         </div>
