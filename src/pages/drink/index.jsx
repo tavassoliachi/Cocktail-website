@@ -38,7 +38,7 @@ export default function Drink() {
                             <p>Updated 01/2/22</p>
                         </div>
                     <div className={styles.details}>
-                        <img src={`${drink?.strDrinkThumb}`} style={{width:'40%',minWidth:"300px"}} alt=''/>
+                        <img src={`${drink?.strDrinkThumb}`} style={{height:"50%",width:'40%',minWidth:"300px"}} alt=''/>
                         <div className={styles.makingDetails} style={{display:'flex',flexDirection:"column",width:"100%",marginLeft:"40px",justifyContent:"flex-start"}}>
                             {drink && <Ingredients drink={drink}/>}
 
