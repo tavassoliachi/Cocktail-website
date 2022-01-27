@@ -40,12 +40,6 @@ export default function Ingredients({ drink }) {
   };
 
 
-    const ingredientDetails = () => {
-        var ingredients = []
-        const keys = drink  ? Object.keys(drink).filter((el)=>el.includes("strIngredient") && drink[el]) : []
-        keys?.forEach((el)=>{return ingredients.push(drink[el])})
-        ingredients.length && dispatch(fetchIngredient(ingredients))
-    }
 
     const handleTitle = (index) => {
          var text = data[index]?.strDescription || "Desctiption for this ingredient was not found"
