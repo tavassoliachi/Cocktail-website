@@ -47,7 +47,7 @@ export default function Ingredients({drink}) {
          const handleSeeMore = () => {
             document.getElementById(`tooltip-${index}`).innerHTML=`${data[index].strDescription}`
          }
-         return [text,seeMore && <div className={styles.seeMore} onClick={()=>handleSeeMore}>See more</div>]
+         return [text,seeMore && <div className={styles.seeMore} onClick={()=>handleSeeMore()}>See more</div>]
     }
 
   return (
