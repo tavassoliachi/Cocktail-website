@@ -8,6 +8,7 @@ import { styled } from "@mui/material/styles";
 import Tooltip, { tooltipClasses } from "@mui/material/Tooltip";
 
 export default function Ingredients({ drink }) {
+
   useEffect(() => {
     ingredientDetails();
   }, []);
@@ -55,18 +56,7 @@ export default function Ingredients({ drink }) {
          }
          return [text,seeMore && <div className={styles.seeMore} onClick={()=>handleSeeMore()}>See more</div>]
     }
-    const handleSeeMore = () => {
-      document.getElementById(`tooltip-${index}`).innerHTML = `${data[index].strDescription}`;
-    };
-    return [
-      text,
-      seeMore && (
-        <div className={styles.seeMore} onClick={() => handleSeeMore()}>
-          See more
-        </div>
-      ),
-    ];
-  };
+   
 
   return (
     <div>
