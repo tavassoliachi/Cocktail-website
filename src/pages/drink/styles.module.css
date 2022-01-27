@@ -42,6 +42,7 @@
     padding-left: 30px;
     font-size: 20px;
     position: relative;
+    width:max-content
 }
 .steps::before{
     content: "";
@@ -68,6 +69,17 @@
 .details{
     display: flex;
     flex-direction: row;
+}
+.seeMore{
+    cursor:pointer;
+    text-decoration: underline;
+    color: blue;
+}
+button{
+    cursor: pointer;
+}
+button:disabled{
+    cursor: unset;
 }
 @media only screen and (max-width: 1010px) {
     .details{
