@@ -1,88 +1,114 @@
-.cont{
-    margin-top: 40px;
-    display: flex;
-    flex-direction: column;
-    padding:0 100px;
+.cont {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  padding: 0 100px;
 }
-.cont > img{
-    width:800px;
+.cont > img {
+  width: 800px;
 }
-.drinkName{
-    font-weight: 600;
-    font-family: Lusitana,Georgia,serif;
-    font-weight: 400;
-    font-size: 3rem;
-    /* padding-left: 25px; */
-    margin:20px 0 0 0 ;
+.drinkName {
+  font-weight: 600;
+  font-family: Lusitana, Georgia, serif;
+  font-weight: 400;
+  font-size: 3rem;
+  /* padding-left: 25px; */
+  margin: 20px 0 0 0;
 }
-.detailCont{
-    margin-left: 30px;
+.detailCont {
+  margin-left: 30px;
 }
-.subDetails{
-    display: flex;
-    flex-direction: row;
+.subDetails {
+  display: flex;
+  flex-direction: row;
 }
-.subDetails >*{
-    margin-right:15px;
-    padding-right: 20px;
+.subDetails > * {
+  margin-right: 15px;
+  padding-right: 20px;
 }
-.subDetails :nth-child(1){
-    border-right:2px dotted black;
+.subDetails :nth-child(1) {
+  border-right: 2px dotted black;
 }
 
-.stepsTitle{
-    font-size: 2.5rem;
-    font-weight: 600;
-    width:60%;
-    border-bottom: dotted;
-    padding-bottom: 5px;
+.stepsTitle {
+  font-size: 2.5rem;
+  font-weight: 600;
+  width: 60%;
+  border-bottom: dotted;
+  padding-bottom: 5px;
 }
-.steps{
-    font-weight: 300;
-    padding-left: 30px;
-    font-size: 20px;
-    position: relative;
-    width:max-content
+.steps {
+  font-weight: 300;
+  padding-left: 30px;
+  font-size: 20px;
+  position: relative;
+  width: max-content;
 }
-.steps::before{
-    content: "";
-    position: absolute;
-    left:0;
-    top:34%;
-    width:10px;
-    height:10px;
-    background-color: brown;
-    transform: rotate(45deg);
+.steps::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 34%;
+  width: 10px;
+  height: 10px;
+  background-color: brown;
+  transform: rotate(45deg);
 }
-.langBtn{
-    margin:10px 10px 0 0;
-    font-weight: 700;
-   padding:5px 15px;
-   border:1px solid black;
-   font-size:0.8rem ;
-    
+.langBtn {
+  margin: 10px 10px 0 0;
+  font-weight: 700;
+  padding: 5px 15px;
+  border: 1px solid black;
+  font-size: 0.8rem;
 }
-.langBtn:disabled{
-    color: #c5c5c5 !important;
-    border: 1px solid #c5c5c5;
+.langBtn:disabled {
+  color: #c5c5c5 !important;
+  border: 1px solid #c5c5c5;
 }
-.details{
-    display: flex;
-    flex-direction: row;
+.details {
+  display: flex;
+  flex-direction: row;
 }
-.seeMore{
-    cursor:pointer;
-    text-decoration: underline;
-    color: blue;
+.seeMore {
+  cursor: pointer;
+  text-decoration: underline;
+  color: blue;
 }
-button{
-    cursor: pointer;
+button {
+  cursor: pointer;
 }
-button:disabled{
-    cursor: unset;
+button:disabled {
+  cursor: unset;
 }
+
 @media only screen and (max-width: 1010px) {
-    .details{
-        flex-direction: column;
-    }
+  .details {
+    flex-direction: column;
+  }
+  .cont {
+    padding: 0;
+  }
+  .drinkCont {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .drinkCont img {
+    margin: auto;
+  }
+  .subDetails {
+    margin-left: 15px;
+  }
+  .steps {
+    margin-right: 0 !important;
+  }
+  .makingDetails {
+    margin-left: 0 !important;
+    margin-top: 20px;
+  }
+  .makingDetails > div {
+    width: 50%;
+    margin: auto;
+  }
 }
