@@ -182,7 +182,7 @@
   width: 100%;
   box-sizing: border-box;
   animation-name: ranImages;
-  animation-duration: 2 s;
+  animation-duration: 3s;
 }
 .card > img {
   width: 100%;
@@ -191,7 +191,7 @@
   width: 50%;
   padding-left: 23px;
   animation-name: ranImages;
-  animation-duration: 4s;
+  animation-duration: 3s;
 }
 
 .ranCard {
