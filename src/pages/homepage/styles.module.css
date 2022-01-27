@@ -160,6 +160,7 @@
   width: 100%;
   box-sizing: border-box;
   padding: 0 50px;
+
 }
 
 .borderDiv {
@@ -180,6 +181,8 @@
   padding: 1rem;
   width: 100%;
   box-sizing: border-box;
+  animation-name: ranImages;
+  animation-duration: 2 s;
 }
 .card > img {
   width: 100%;
@@ -187,13 +190,19 @@
 .ranImages {
   width: 50%;
   padding-left: 23px;
+  animation-name: ranImages;
+  animation-duration: 4s;
 }
+
 .ranCard {
   background-color: white;
+  animation-name: example;
+  animation-duration: 4s;
   padding: 1rem;
   height: max-content;
   box-sizing: border-box;
 }
+
 .bottomSection {
   display: flex;
   /* flex-wrap: wrap; */
@@ -223,6 +232,19 @@
 }
 .dottedBorder {
   border-right: 2.5px dotted white;
+}
+.ranCard:hover{
+    transform: translateY(-5px);
+}
+.card:hover{
+    transform: translateY(-5px);  
+}
+.drink:hover > img{
+    opacity: 0.6;
+}
+@keyframes ranImages{
+    0% {opacity: 0}
+    100%{opacity: 1;}
 }
 @media only screen and (max-width: 1010px) {
   .drinks2 {
