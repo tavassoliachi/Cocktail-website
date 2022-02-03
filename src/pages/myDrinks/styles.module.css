@@ -1,0 +1,69 @@
+.drinksCont{
+    display: flex;
+    flex-wrap: wrap;
+    padding:1rem 10rem;
+    width: 100%;
+    box-sizing: border-box;
+}
+.buttonsCont{
+    width:100%;
+    box-sizing: border-box;
+    padding:0 0 0 1rem;
+    display: flex;
+    justify-content: space-between;
+}
+.buttonsCont > button{
+    width: 47%;
+    background-color: transparent;
+    border : var(--mainBlue) 2px solid;
+    color:var(--mainBlue);
+    border-radius: 5px;
+    font-weight: 600;
+}
+.dialog{
+    background-color: var(--mainBlue);
+    padding:1rem 5rem !important;
+}
+.dialogTitle{
+    background-color: var(--mainBlue);
+    color:white;
+    text-align: center;   
+}
+.dialog > div{
+    margin: 0.5rem 0;
+}
+.dialog button{
+    width:10rem;
+    background-color: white;
+    color: black;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    border:2px solid white;
+    padding:0.5rem 0;
+}
+.addButton{
+    width: 8rem;
+    text-transform: uppercase;
+    background-color: var(--mainBlue);
+    border : var(--mainBlue) 2px solid;
+    color:white;
+    border-radius: 5px;
+    padding:0.3rem 0;
+    font-weight: 600;
+}
+.title{
+    text-align: center;
+    color:var(--mainBlue);
+}
+@media only screen and (max-width: 900px) {
+    .drinksCont{
+        padding:unset;
+        justify-content: center;
+
+    }
+}
+.drink *{
+    text-decoration: unset;
+}

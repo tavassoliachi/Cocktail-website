@@ -291,3 +291,9 @@
     transform: translateX(-13px);
   }
 }
+.star{
+  position: absolute;
+  top:12em;
+  right:0;
+  cursor: pointer;
+}

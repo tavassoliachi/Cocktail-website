@@ -1,4 +1,51 @@
-import { alcoholic,nonAlcoholic,singleDrink,randomDrink,search,ingredient } from "../consts/reducerType"
+import { user,alcoholic,nonAlcoholic,singleDrink,randomDrink,search,ingredient } from "../consts/reducerType"
+export const userDrinks = (state={},action) => {
+    switch(action.type){
+        case "attachDrinks":
+            return{
+                data:action.payload
+            }
+        case "removeDrinks":
+            return{
+                data:{}
+            }
+            default:
+                return state
+    }
+}
+export const loginUser = (state={},action) => {
+    switch(action.type){
+        case user.logIn:
+            return{
+                data:action.payload,
+                error:""
+            }
+        case user.logOut:
+            return{
+                data: {}
+            }
+        case user.loginFail:
+            return{
+                error: action.error
+            }
+        default:
+            return state
+    }
+}
+export const registerUser = (state={},action) => {
+    switch(action.type){
+        case user.registerSuccess:
+            return{
+                error:""
+            }
+        case user.registerFail:
+            return{
+                error:action.error
+            }
+        default:
+            return state
+    }
+}
 export const alcoholicData = (state={},action) => {
     switch(action.type){
         case alcoholic.request:

@@ -29,3 +29,10 @@ export const ingredient = {
   success: "Success_ingredient",
   fail: "Fail_ingredient",
 };
+export const user = {
+  logIn: "user_attachData",
+  logOut:"user_logOut",
+  loginFail:"user_attachDataFail",
+  registerSuccess:"user_registerSuccess",
+  registerFail:"user_registerFail"
+}

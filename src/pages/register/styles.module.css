@@ -1,0 +1,46 @@
+.mainCont{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.regCont{
+    background-color: #06273A;;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: max-content;
+    padding:30px;
+    border-radius: 5px;
+}
+.regCont >div{
+    margin:10px 0;
+}
+.regCont  input{
+    width:15rem;
+}
+.title{
+    color:white;
+    font-size: 1.8rem;
+    margin:0;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+.regCont .css-1e83efs-MuiInputBase-root-MuiInput-root:before {
+    border-bottom:1px solid white !important;
+}
+.regCont .MuiInput-underline{
+    border-bottom:1px solid white !important;
+}
+.regCont .MuiInput-underline:hover{
+    border-bottom:1px solid white !important;
+}
+.regButton{
+    width:100%;
+    padding:10px 0;
+    color:#06273A;
+    background-color: white;
+    border:unset;
+    text-transform: uppercase;
+    font-weight: 600;
+}

@@ -20,8 +20,8 @@ function sendHeader() {
 }
 
 const post = async (url, dataToSend) => {
-  const { data } = await axiosCustom.post(url, dataToSend,sendHeader());
-  return data;
+  const res = await axiosCustom.post(url, dataToSend,sendHeader());
+  return res;
 };
 
 const get = async (url) => {

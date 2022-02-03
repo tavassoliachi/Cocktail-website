@@ -65,13 +65,51 @@
 }
 .search {
     position: absolute;
-    right:100px;
+    right:50px;
     z-index:2;
     cursor: pointer;
 }
 .searchInput{
     position: absolute;
-    right:100px;
+    right:50px;
     height:20px;
     width:180px;
+    border-radius: 5px;
+}
+.myDrinks{
+  /* position: absolute; */
+  color:white;
+  top:1.5rem;
+  left:1rem;
+  width:max-content;
+  text-decoration: unset;
+  padding-right: 1rem;
+  border-right: 3px dotted white;
+  margin-right: 20px;
+}
+.authBtn{
+  /* position: absolute; */
+  width:max-content;
+  background-color: transparent;
+  color: white;
+  border:1px solid white;
+  border-radius: 3px;
+  padding:3px 10px;
+  text-decoration: none;
+margin-right: 10px;
+}
+@media only screen and (max-width: 680px) {
+    .header{
+        padding-bottom: 50px;
+    }
+    .search,.searchInput{
+        top:80px;
+        right:10px;
+    }
+    .searchInput{
+        width: 120px;
+    }
+    .myDrinks,.authBtn{
+        margin-top: 105px;
+    }
 }
