@@ -81,7 +81,7 @@ export default function MyDrinks() {
             );
           })}
       </div>
-     { Object.keys(favDrinks).length && <h1 className={styles.title}>Favourite Drinks</h1>}
+     {favDrinks && Object.keys(favDrinks).length && <h1 className={styles.title}>Favourite Drinks</h1>}
       <div className={styles.drinksCont}>
         {favDrinks &&
           Object.keys(favDrinks).map((el) => {
@@ -102,7 +102,7 @@ export default function MyDrinks() {
         editData={editData}
         setEditData={setEditData}
         instructions={instructions}
-        seInstructions={setInstructions}
+        setInstructions={setInstructions}
       />
     </div>
   );

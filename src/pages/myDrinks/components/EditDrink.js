@@ -85,7 +85,6 @@ function EditDrink({
             setEditData({ ...editData, strAlcoholic: e.target.value })
           }
         />
-        {/* {console.log(editData)} */}
         {Object.keys(editData)
           .filter((el) => el.includes("strIngredient"))
           .map((el) => {
