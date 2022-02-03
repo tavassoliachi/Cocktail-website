@@ -15,7 +15,6 @@ export default function Register() {
     const data = useSelector(data => data?.registerUser)
   return <div className={styles.mainCont}>
 
-            <h1>{data?.error}</h1>
             <div className={styles.regCont} id='inputs-mui'>
                 <h1 className={styles.title}>registration</h1>
 

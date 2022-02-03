@@ -81,7 +81,7 @@ export default function MyDrinks() {
             );
           })}
       </div>
-          <h1 className={styles.title}>Favourite Drinks</h1>
+     { Object.keys(favDrinks).length && <h1 className={styles.title}>Favourite Drinks</h1>}
       <div className={styles.drinksCont}>
         {favDrinks &&
           Object.keys(favDrinks).map((el) => {
@@ -93,7 +93,7 @@ export default function MyDrinks() {
                 />
               </div>
             );
-          })}
+          }) }
       </div>
       <AddNewDrink addDialog={addDialog} setAddDialog={setAddDialog} />
       <EditDrink
