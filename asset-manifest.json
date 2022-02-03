@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/Cocktail-website/static/css/main.95e94480.css",
+    "main.js": "/Cocktail-website/static/js/main.d0f3f734.js",
+    "static/js/787.4453b10b.chunk.js": "/Cocktail-website/static/js/787.4453b10b.chunk.js",
+    "static/media/arrow.png": "/Cocktail-website/static/media/arrow.67ef31c1bc17c00293d3.png",
+    "static/media/tools.png": "/Cocktail-website/static/media/tools.979d8e4ac121b910e7a7.png",
+    "static/media/mainLogo.png": "/Cocktail-website/static/media/mainLogo.aa5275467290a868f0a7.png",
+    "static/media/Capture.PNG": "/Cocktail-website/static/media/Capture.b47867a58fccabc9754a.PNG",
+    "static/media/shaker.PNG": "/Cocktail-website/static/media/shaker.5229b693f8ee5a28d507.PNG",
+    "index.html": "/Cocktail-website/index.html",
+    "main.95e94480.css.map": "/Cocktail-website/static/css/main.95e94480.css.map",
+    "main.d0f3f734.js.map": "/Cocktail-website/static/js/main.d0f3f734.js.map",
+    "787.4453b10b.chunk.js.map": "/Cocktail-website/static/js/787.4453b10b.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.95e94480.css",
+    "static/js/main.d0f3f734.js"
+  ]
+}
