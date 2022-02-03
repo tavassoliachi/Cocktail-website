@@ -27,7 +27,7 @@ export default function RandomDrinks({randomDrinks,loading}) {
                         <p className={styles.drinkCat}>{randomDrinks[1].strCategory}</p>
                         <span className={styles.drinkTitle}>{randomDrinks[1].strDrink}</span>
                     </Link>
-                    <Link to={`/drink?id=${randomDrinks[0].idDrink}`} className={`${styles.link} ${styles.fixpos}`} style={{textAlign:"left"}}>
+                    <Link to={`/drink?id=${randomDrinks[2].idDrink}`} className={`${styles.link} ${styles.fixpos}`} style={{textAlign:"left"}}>
                         <div className={styles.ranCard}>
                             <img src={randomDrinks[2].strDrinkThumb} style={{width:"100%"}} alt='random Drink'/>
                         </div>
