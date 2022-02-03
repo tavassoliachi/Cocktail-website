@@ -2,15 +2,11 @@ import {alcoholicURL, nonAlcoholicURL,singleDrinkURL,randomDrinkURL,searchDrinkU
 import { alcoholic,nonAlcoholic,singleDrink,randomDrink,search,ingredient,user } from "../consts/reducerType"
 import { api } from "../../utils/api"
 import { auth } from "../../firebase-config"
-import { useNavigate } from "react-router-dom"
 import {signOut,signInWithEmailAndPassword,createUserWithEmailAndPassword,updateProfile} from 'firebase/auth'
-import {setDoc,getDoc,doc,collection,deleteField} from "firebase/firestore"
+import {setDoc,getDoc,doc,deleteField} from "firebase/firestore"
 import { db } from "../../firebase-config"
-export const userFavourites = (props) => async (dispatch) => {
 
-}
 export const userRecepies = (props) => async (dispatch) => {
-    const res = await getDoc(doc(db,"users",auth.currentUser.uid))
 
     const attachData = async () => {
         var res1 = await getDoc(doc(db,"users",auth.currentUser.uid))
@@ -34,6 +30,8 @@ export const userRecepies = (props) => async (dispatch) => {
         case "delete":
             const id = props.payload.id
             await setDoc(doc(db,"users",auth.currentUser.uid),{drinks:{[id]:deleteField() }},{merge:true})
+            break
+        default : { }
     }
     props.type !=="removeData" && props.type !=="attach" && attachData()
 
@@ -89,35 +87,35 @@ export const authorization = (props) => async (dispatch) => {
                 login()
             }
           break
+        default : { }
 
     }
 }
 export const fetchDrinks = (type) => async (dispatch) => {
 
     var url = ''
-    var success,fail,request
+    var success,fail
     switch (type){
         case "alcoholic":
             url = alcoholicURL
             success = alcoholic.success
             fail=alcoholic.fail
-            request=alcoholic.request
             break
         case "nonAlcoholic":
             url = nonAlcoholicURL
             success=nonAlcoholic.success
             fail=nonAlcoholic.fail
-            request=nonAlcoholic.request
             break
+        default : { }
     }
 
-    const {data,error} = await api.get(`${url}`)
+    const {data} = await api.get(`${url}`)
     data ? dispatch({type:`${success}`,payload:data}) : dispatch({type:`${fail}`,message:'Error,could not fetch drinks.'})
 
 }
 export const fetchSingleDrink = (id) => async (dispatch) => {
     dispatch({type:`${singleDrink.request}`})
-    const {data,error} = await api.get(`${singleDrinkURL+id}`)
+    const {data} = await api.get(`${singleDrinkURL+id}`)
     data.drinks?.length ? dispatch({type:`${singleDrink.success}`,payload:data}) : dispatch({type:`${singleDrink.fail}`,message:`Error,could not fetch drink with id ${id}`})
 }
 export const fetchRandomDrinks = (n) => async (dispatch) => {

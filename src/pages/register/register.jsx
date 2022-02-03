@@ -8,10 +8,9 @@ import TextField from '@mui/material/TextField';
 export default function Register() {
     const [email,setEmail] = useState('')
     const [pass,setPass] = useState('')
-    const [name,setName] = useState('')
     const dispatch = useDispatch()
     const handleRegister= async ()=>{
-            dispatch(authorization({type:"register",email:`${email}`,password:`${pass}`,displayName:`${name}`}))
+            dispatch(authorization({type:"register",email:`${email}`,password:`${pass}`}))
     }
     const data = useSelector(data => data?.registerUser)
   return <div className={styles.mainCont}>
@@ -23,16 +22,17 @@ export default function Register() {
                         <TextField
                         error={data?.error?.includes("mail")}
                         label="Email"
+                        value={email}
+                        onChange={(e)=>setEmail(e.target.value)}
                         helperText={data?.error?.includes("mail") && <p style={{width:'15rem'}}>{data.error}</p>}
                         />
                         <TextField
                         error={data?.error?.includes("password")}
                         label="Password"
+                        value={pass}
+                        onChange={(e)=>setPass(e.target.value)}
                         type={'password'}
                         helperText={data?.error?.includes("password") && <p style={{width:'15rem'}}>{data.error}</p>}
-                        />
-                        <TextField
-                        label="Display name"
                         />
 
 

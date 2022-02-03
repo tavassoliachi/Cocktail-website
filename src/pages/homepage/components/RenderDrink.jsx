@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styles from "../styles.module.css"
-import {setDoc,getDoc,doc,collection,deleteField} from "firebase/firestore"
+import {setDoc,doc,deleteField} from "firebase/firestore"
 import { auth } from '../../../firebase-config';
 import { db } from '../../../firebase-config';
 import { useSelector } from 'react-redux';

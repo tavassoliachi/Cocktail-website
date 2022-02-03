@@ -1,4 +1,4 @@
-import React,{useEffect,useState} from 'react';
+import React,{useEffect} from 'react';
 import { fetchSearchResult } from '../../redux/actions/fetchActions';
 import { useDispatch,useSelector } from 'react-redux';
 import RenderDrink from '../homepage/components/RenderDrink';

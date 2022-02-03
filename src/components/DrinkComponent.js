@@ -25,7 +25,7 @@ export default function DrinkComponent({drink,loading,id}) {
                 <div>
                     <div className={styles.stepsTitle}>Instructions</div>
                 {instructions.map((el)=>{
-                    const active = lang==el
+                    const active = lang===el
                     return <>
                     <button disabled={!drink[el]} className={styles.langBtn} style={active ? {backgroundColor:"black",color:"white"} : {backgroundColor:"white",color:'black'}} onClick={()=>setLang(el)}>{el !== 'strInstructions' ? el.substring('strInstructions'.length) : "ENG"}</button>
                     </>

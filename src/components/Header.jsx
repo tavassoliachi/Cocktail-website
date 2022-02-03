@@ -15,7 +15,7 @@ export default function Header() {
   function handleExit(e) {
     if (!e.target.id.includes("search")) {
       setSearch(false);
-    } else if (e.target.id == "searchIcon") {
+    } else if (e.target.id === "searchIcon") {
       handleRedirect();
     }
   }
