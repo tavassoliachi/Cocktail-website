@@ -23,6 +23,7 @@ export default function Register() {
                         error={data?.error?.includes("mail")}
                         label="Email"
                         value={email}
+                        autoComplete='off'
                         onChange={(e)=>setEmail(e.target.value)}
                         helperText={data?.error?.includes("mail") && <p style={{width:'15rem'}}>{data.error}</p>}
                         />
