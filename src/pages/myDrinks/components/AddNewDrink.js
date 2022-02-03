@@ -54,6 +54,7 @@ export default function AddNewDrink({ setAddDialog, addDialog }) {
         payload: { ...addData, ...ingredients, ...strInstructions },
       })
     );
+    setAddDialog(false)
   }
   return (
     <Dialog open={addDialog} onClose={() => setAddDialog(false)}>

@@ -56,6 +56,7 @@ function EditDrink({
         payload: { editData: {  ...newInstructions,...newData } },
       })
     );
+    setEditDialog(false)
   }
   return (
     <Dialog open={editDialog} onClose={() => setEditDialog(false)}>
