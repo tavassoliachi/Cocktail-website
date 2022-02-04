@@ -297,3 +297,11 @@
   right:0;
   cursor: pointer;
 }
+.authBTN{
+  text-decoration: none;
+  border:2px solid var(--mainBlue);
+  color:white;
+  font-weight: 600;
+  background-color: var(--mainBlue);
+  padding:.5rem 1rem;
+}

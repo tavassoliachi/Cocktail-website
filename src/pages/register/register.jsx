@@ -8,6 +8,7 @@ import TextField from '@mui/material/TextField';
 export default function Register() {
     const [email,setEmail] = useState('')
     const [pass,setPass] = useState('')
+    const [rePass,setRePass] = useState('')
     const dispatch = useDispatch()
     const handleRegister= async ()=>{
             dispatch(authorization({type:"register",email:`${email}`,password:`${pass}`}))
@@ -34,10 +35,18 @@ export default function Register() {
                         type={'password'}
                         helperText={data?.error?.includes("password") && <p style={{width:'15rem'}}>{data.error}</p>}
                         />
+                        <TextField
+                        error={pass.length>0 && rePass !== pass}
+                        label="Repeat Password"
+                        value={rePass}
+                        onChange={(e)=>setRePass(e.target.value)}
+                        type={'password'}
+                        helperText={pass.length>0 && rePass !== pass && 'Passwords do not match'}
+                        />
 
 
 
-                <button onClick={handleRegister} className={styles.regButton}>register</button>
+                <button onClick={handleRegister} disabled={!Boolean(rePass==pass)} className={styles.regButton}>register</button>
             </div>
         </div>;
 }

@@ -5,14 +5,9 @@ import { fetchRandomDrinks } from '../../redux/actions/fetchActions';
 import { useSelector } from 'react-redux';
 import styles from "./styles.module.css"
 import Drinks from './components/Drinks';
-import image1 from "../../assets/Capture.PNG";
+import subLogo from "../../assets/Capture.PNG";
 import { debounce } from 'lodash';
 import RandomDrinks from './components/RandomDrinks';
-import { auth } from '../../firebase-config';
-import { Link } from 'react-router-dom';
-import { db } from '../../firebase-config';
-import { authorization } from '../../redux/actions/fetchActions';
-import {setDoc,getDoc,doc,collection} from "firebase/firestore"
 export default function Homepage() {
     const dispatch = useDispatch()
     const alc = useSelector((data)=>{return data.alcoholicData})
@@ -28,7 +23,7 @@ export default function Homepage() {
     const randomDrinksLoading = randomDrinks?.loading
 
 
-    useEffect( async ()=>{
+    useEffect(()=>{
         dispatch(fetchRandomDrinks(3)) 
         const alc = debounce(()=>dispatch(fetchDrinks("alcoholic")),200)
         const nonAlc = debounce(()=>dispatch(fetchDrinks("nonAlcoholic")),400)
@@ -41,7 +36,7 @@ export default function Homepage() {
 
     <div className={styles.randomSection} >
         <div style={{width:"100%",display:'flex',justifyContent:"center",allignItems:'center',marginBottom:"20px"}}>
-            <img src={image1} style={{width:'70%',maxHeight:"150px",objectFit:"contain",transform:"translateX(-5px)"}} alt=''/>
+            <img src={subLogo} style={{width:'70%',maxHeight:"150px",objectFit:"contain",transform:"translateX(-5px)"}} alt=''/>
         </div>
         
         {randomDrinksData && ( <RandomDrinks randomDrinks={randomDrinksData} loading={randomDrinksLoading}/> )}

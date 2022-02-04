@@ -45,3 +45,6 @@
     text-transform: uppercase;
     font-weight: 600;
 }
+.regButton:disabled{
+    opacity:0.3;
+}
