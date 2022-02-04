@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { userRecepies } from "../../redux/actions/fetchActions";
@@ -8,8 +9,10 @@ import { Link } from "react-router-dom";
 import EditDrink from "./components/EditDrink";
 import AddNewDrink from "./components/AddNewDrink";
 import styles from "./styles.module.css";
+import { auth } from "../../firebase-config";
 export default function MyDrinks() {
   const dispatch = useDispatch();
+  const navigate = useNavigate()
   const [addDialog, setAddDialog] = useState(false);
   const [editDialog, setEditDialog] = useState(false);
   const [editData, setEditData] = useState({
@@ -46,7 +49,9 @@ export default function MyDrinks() {
     setInstructions(instList);
     setEditDialog(true);
   }
-
+  useEffect(()=>{
+    !auth.currentUser && navigate("/")
+  },[])
 
   return (
     <div>

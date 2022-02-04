@@ -305,3 +305,8 @@
   background-color: var(--mainBlue);
   padding:.5rem 1rem;
 }
+.loading{
+  position: absolute;
+  top:18rem;
+  right:0;
+}

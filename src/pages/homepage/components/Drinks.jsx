@@ -6,6 +6,17 @@ import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import CircularProgress from "@mui/material/CircularProgress";
 export default function Drinks({ drinks, thisCat, loading }) {
   const [drinkNum, setDrinkNum] = useState(8);
+  const showMore = () => {
+    const spinner = document.getElementById(`spinner-${thisCat}`);
+    spinner.style.display = "unset";
+    const loadDrinks = () => {
+      setDrinkNum(drinkNum + 8);
+      spinner.style.display = "none";
+    };
+    setTimeout(() => {
+      loadDrinks();
+    }, 1500);
+  };
   return (
     <div>
       <h1 className={styles.title}>
@@ -32,9 +43,14 @@ export default function Drinks({ drinks, thisCat, loading }) {
                 );
               })}
             </div>
+            <CircularProgress
+              style={{ display: "none" }}
+              id={`spinner-${thisCat}`}
+            />
             <button
-              onClick={() => setDrinkNum(drinkNum + 8)}
+              onClick={showMore}
               className={styles.showMore}
+              id="showMore"
             >
               SHOW MORE
             </button>

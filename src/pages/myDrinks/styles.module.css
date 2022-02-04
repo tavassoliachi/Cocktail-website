@@ -43,6 +43,7 @@
     border:2px solid white;
     padding:0.5rem 0;
 }
+
 .addButton{
     width: 8rem;
     text-transform: uppercase;
@@ -56,6 +57,18 @@
 .title{
     text-align: center;
     color:var(--mainBlue);
+}
+.submitBTN{
+    background-color: transparent;
+    color: black;
+    padding: .5rem 0;
+    border: unset;
+    border-top:1px solid black;
+    font-weight: 600;
+    font-size: 1.2rem;
+}
+.submitBTN:disabled{
+    opacity: .2;
 }
 @media only screen and (max-width: 900px) {
     .drinksCont{

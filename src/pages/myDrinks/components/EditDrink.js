@@ -5,6 +5,9 @@ import { ListItem } from "@mui/material";
 import TextField from "@mui/material/TextField";
 import { userRecepies } from "../../../redux/actions/fetchActions";
 import { useDispatch } from "react-redux";
+import Radio from "@mui/material/Radio";
+import RadioGroup from "@mui/material/RadioGroup";
+import FormControlLabel from "@mui/material/FormControlLabel";
 function EditDrink({
   editDialog,
   setEditDialog,
@@ -53,11 +56,25 @@ function EditDrink({
     dispatch(
       userRecepies({
         type: "edit",
-        payload: { editData: {  ...newInstructions,...newData } },
+        payload: { editData: { ...newInstructions, ...newData } },
       })
     );
-    setEditDialog(false)
+    setEditDialog(false);
   }
+
+  const strIngredient = Object.keys(editData).filter((el) =>
+    el.includes("strIngredient")
+  );
+  const strMeasures = Object.keys(editData).filter((el) =>
+    el.includes("strMeasure")
+  );
+  const ingrArray = [];
+  var n = 0;
+  while (ingrArray.length !== strIngredient.length) {
+    ingrArray.push([strIngredient[n], strMeasures[n]]);
+    n++;
+  }
+
   return (
     <Dialog open={editDialog} onClose={() => setEditDialog(false)}>
       <DialogTitle className={styles.dialogTitle}>Edit Drink</DialogTitle>
@@ -79,46 +96,66 @@ function EditDrink({
             setEditData({ ...editData, strDrinkThumb: e.target.value })
           }
         />
-        <TextField
-          label="Category"
+        <RadioGroup
           value={editData.strAlcoholic}
           onChange={(e) =>
             setEditData({ ...editData, strAlcoholic: e.target.value })
           }
-        />
-        {Object.keys(editData)
-          .filter((el) => el.includes("strIngredient"))
-          .map((el) => {
-            return (
-              <TextField
-                label={`${el}`}
-                value={editData[el]}
-                onChange={(e) =>
-                  setEditData({ ...editData, [el]: e.target.value })
-                }
-              />
-            );
-          })}
+          style={{ display: "flex", flexDirection: "row" }}
+          name="radio-buttons-group"
+        >
+          <FormControlLabel
+            value="Alcoholic"
+            style={{ color: "white" }}
+            control={<Radio style={{ color: "white" }} />}
+            label="Alcoholic"
+          />
+          <FormControlLabel
+            value="nonAlcoholic"
+            style={{ color: "white" }}
+            control={<Radio style={{ color: "white" }} />}
+            label="nonAlcoholic"
+          />
+        </RadioGroup>
+        {ingrArray.map((el) => {
+          return (
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                justifyContent: "space-between",
+                width: "103%",
+              }}
+            >
+              {el.map((elem) => {
+                return (
+                  <TextField
+                    label={`${elem}`}
+                    value={editData[elem]}
+                    onChange={(e) =>
+                      setEditData({ ...editData, [elem]: e.target.value })
+                    }
+                  />
+                );
+              })}
+            </div>
+          );
+        })}
 
-        {Object.keys(editData)
-          .filter((el) => el.includes("strMeasure"))
-          .map((el) => {
-            return (
-              <TextField
-                label={`${el}`}
-                value={editData[el]}
-                onChange={(e) =>
-                  setEditData({ ...editData, [el]: e.target.value })
-                }
-              />
-            );
-          })}
-
-        <button onClick={() => addIngredient()}>Add Ingredient</button>
+        <button onClick={() => addIngredient()} style={{ margin: "1rem 0" }}>
+          Add Ingredient
+        </button>
 
         {Object.keys(instructions)?.map((el) => {
           return (
-            <>
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                justifyContent: "space-between",
+                width: "103%",
+              }}
+            >
               <TextField
                 label={`${el}`}
                 value={instructions[el].value}
@@ -145,13 +182,26 @@ function EditDrink({
                   })
                 }
               />
-            </>
+            </div>
           );
         })}
 
-        <button onClick={() => addInstruction()}>Add instruction</button>
+        <button onClick={() => addInstruction()} style={{ margin: "1rem 0" }}>
+          Add instruction
+        </button>
       </ListItem>
-      <button onClick={handleEdit} style={{backgroundColor:"white",color:"black",padding:".5rem 0",border:"1px solid black",fontWeight:"600"}}>Submit</button>
+      <button
+        onClick={handleEdit}
+        style={{
+          backgroundColor: "white",
+          color: "black",
+          padding: ".5rem 0",
+          border: "1px solid black",
+          fontWeight: "600",
+        }}
+      >
+        Submit
+      </button>
     </Dialog>
   );
 }

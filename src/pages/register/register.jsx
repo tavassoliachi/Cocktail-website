@@ -5,13 +5,18 @@ import styles from "./styles.module.css"
 import { useSelector } from 'react-redux';
 import "./styles.css"
 import TextField from '@mui/material/TextField';
+
 export default function Register() {
     const [email,setEmail] = useState('')
     const [pass,setPass] = useState('')
     const [rePass,setRePass] = useState('')
     const dispatch = useDispatch()
     const handleRegister= async ()=>{
+            document.getElementById("register").disabled=true
             dispatch(authorization({type:"register",email:`${email}`,password:`${pass}`}))
+            setTimeout(() => {
+                document.getElementById("register").disabled = false;
+              }, 1000);
     }
     const data = useSelector(data => data?.registerUser)
   return <div className={styles.mainCont}>
@@ -43,10 +48,10 @@ export default function Register() {
                         type={'password'}
                         helperText={pass.length>0 && rePass !== pass && 'Passwords do not match'}
                         />
+                        
 
 
-
-                <button onClick={handleRegister} disabled={!Boolean(rePass==pass)} className={styles.regButton}>register</button>
+                <button onClick={handleRegister} disabled={!Boolean(rePass==pass)} className={styles.regButton} id="register">register</button>
             </div>
         </div>;
 }
