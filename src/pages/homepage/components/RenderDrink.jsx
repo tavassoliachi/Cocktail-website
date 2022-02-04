@@ -11,15 +11,18 @@ import { userRecepies } from "../../../redux/actions/fetchActions";
 import { Modal } from "@mui/material";
 import StarIcon from "@mui/icons-material/Star";
 import { Typography, Box } from "@mui/material";
+import CircularProgress from "@mui/material/CircularProgress";
 export default function RenderDrink({ el, category }) {
   const data = useSelector((data) => data.userDrinks?.data?.favourites);
   const [authModal, setAuthModal] = useState(false);
+  const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
   const favKeys = data ? Object.keys(data) : [];
   const handleFav = async () => {
     if (auth.currentUser) {
-      setDoc(
-        await doc(db, "users", auth.currentUser.uid),
+      setLoading(true);
+      await setDoc(
+        doc(db, "users", auth.currentUser.uid),
         {
           favourites: {
             [el.idDrink]: {
@@ -33,17 +36,24 @@ export default function RenderDrink({ el, category }) {
         { merge: true }
       );
       dispatch(userRecepies({ type: "attach" }));
+      setTimeout(() => {
+        setLoading(false);
+      }, 1500);
     } else {
       setAuthModal(true);
     }
   };
   const handleUnFav = async () => {
-    setDoc(
+    setLoading(true);
+    await setDoc(
       doc(db, "users", auth.currentUser.uid),
       { favourites: { [el.idDrink]: deleteField() } },
       { merge: true }
     );
     dispatch(userRecepies({ type: "attach" }));
+    setTimeout(() => {
+      setLoading(false);
+    }, 800);
   };
   const style = {
     position: "absolute",
@@ -67,7 +77,12 @@ export default function RenderDrink({ el, category }) {
             You need to be Authorized to add drink to favourites
           </Typography>
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            <Link to="/login" className={styles.authBTN}>LOGIN</Link> <Link to="/register" className={styles.authBTN}>REGISTER</Link>
+            <Link to="/login" className={styles.authBTN}>
+              LOGIN
+            </Link>{" "}
+            <Link to="/register" className={styles.authBTN}>
+              REGISTER
+            </Link>
           </Typography>
         </Box>
       </Modal>
@@ -92,10 +107,26 @@ export default function RenderDrink({ el, category }) {
           </p>
         </div>
       </Link>
-      {favKeys && favKeys?.includes(`${el.idDrink}`) ? (
-        <StarIcon className={styles.star} onClick={() => handleUnFav()} />
+      {favKeys && !loading ? (
+        favKeys?.includes(`${el.idDrink}`) ? (
+          <StarIcon
+            className={styles.star}
+            id={`star_${el.idDrink}`}
+            onClick={() => handleUnFav()}
+          />
+        ) : (
+          <StarOutlineIcon
+            className={styles.star}
+            id={`star_${el.idDrink}`}
+            onClick={() => handleFav()}
+          />
+        )
       ) : (
-        <StarOutlineIcon className={styles.star} onClick={() => handleFav()} />
+        <CircularProgress
+          id={`loading_${el.idDrink}`}
+          size={25}
+          className={styles.loading}
+        />
       )}
     </div>
   );
