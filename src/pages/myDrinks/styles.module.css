@@ -1,7 +1,7 @@
 .drinksCont{
     display: flex;
     flex-wrap: wrap;
-    padding:1rem 10rem;
+    padding:1rem 11rem;
     width: 100%;
     box-sizing: border-box;
 }
@@ -22,7 +22,7 @@
 }
 .dialog{
     background-color: var(--mainBlue);
-    padding:1rem 5rem !important;
+    padding:1rem 5rem ;
 }
 .dialogTitle{
     background-color: var(--mainBlue);
@@ -80,3 +80,15 @@
 .drink *{
     text-decoration: unset;
 }
+.showMore {
+    width: 250px;
+    height: 50px;
+    background-color: #265986;
+    border: none;
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 500;
+    transform: translateY(5rem);
+    margin:auto;
+    margin-bottom: 7rem;
+  }

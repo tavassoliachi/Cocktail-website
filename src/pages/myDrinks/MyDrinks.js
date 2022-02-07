@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
@@ -9,12 +9,17 @@ import { Link } from "react-router-dom";
 import EditDrink from "./components/EditDrink";
 import AddNewDrink from "./components/AddNewDrink";
 import styles from "./styles.module.css";
+import { CircularProgress } from "@mui/material";
 import { auth } from "../../firebase-config";
 export default function MyDrinks() {
   const dispatch = useDispatch();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const [addDialog, setAddDialog] = useState(false);
   const [editDialog, setEditDialog] = useState(false);
+  const [favDrinksN, setFavDrinksN] = useState(8);
+  const [myDrinksN, setMyDrinksN] = useState(8);
+  const [favLoading, setFavLoading] = useState(false);
+  const [drinksLoading, setDrinksLoading] = useState(false);
   const [editData, setEditData] = useState({
     strDrink: "",
     strAlcoholic: "",
@@ -49,9 +54,9 @@ export default function MyDrinks() {
     setInstructions(instList);
     setEditDialog(true);
   }
-  useEffect(()=>{
-    !auth.currentUser && navigate("/")
-  },[])
+  useEffect(() => {
+    !auth.currentUser && navigate("/");
+  }, []);
 
   return (
     <div>
@@ -63,7 +68,7 @@ export default function MyDrinks() {
           alignItems: "center",
         }}
       >
-        <h1  className={styles.title}>Your Drinks</h1>
+        <h1 className={styles.title}>Your Drinks</h1>
         <button onClick={() => setAddDialog(true)} className={styles.addButton}>
           add
         </button>
@@ -71,34 +76,82 @@ export default function MyDrinks() {
 
       <div className={styles.drinksCont}>
         {drinks &&
-          Object.keys(drinks)?.map((elem) => {
-            const el = drinks[elem];
-            return (
-              <div className={styles.drink}>
-                <Link to={`/myDrinks/drink?id=${elem}`}>
-                  <GenerateDrink el={el} category={el.strAlcoholic} />
-                </Link>
-                <div className={styles.buttonsCont}>
-                  <button onClick={() => handleEditOpen(el, elem)}>Edit</button>
-                  <button onClick={() => deleteDrink(elem)}>Delete</button>
+          Object.keys(drinks)
+            ?.slice(0, myDrinksN)
+            .map((elem) => {
+              const el = drinks[elem];
+              return (
+                <div className={styles.drink}>
+                  <Link to={`/myDrinks/drink?id=${elem}`}>
+                    <GenerateDrink el={el} category={el.strAlcoholic} />
+                  </Link>
+                  <div className={styles.buttonsCont}>
+                    <button onClick={() => handleEditOpen(el, elem)}>
+                      Edit
+                    </button>
+                    <button onClick={() => deleteDrink(elem)}>Delete</button>
+                  </div>
                 </div>
-              </div>
-            );
-          })}
+              );
+            })}
+        {drinksLoading && (
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              width: "100%",
+              marginTop: "20px",
+            }}
+          >
+            <CircularProgress />
+          </div>
+        )}
+        {drinks && Object.keys(drinks).length > myDrinksN && (
+          <button
+            className={styles.showMore}
+            onClick={() => [setDrinksLoading(true),setTimeout(function(){setDrinksLoading(false);setMyDrinksN(myDrinksN+8)},2000)]}
+          >
+            Show more
+          </button>
+        )}
       </div>
-     {favDrinks && Object.keys(favDrinks).length && <h1 className={styles.title}>Favourite Drinks</h1>}
+      {favDrinks && Object.keys(favDrinks).length && (
+        <h1 className={styles.title}>Favourite Drinks</h1>
+      )}
       <div className={styles.drinksCont}>
         {favDrinks &&
-          Object.keys(favDrinks).map((el) => {
-            return (
-              <div className={styles.drink}>
-                <RenderDrink
-                  el={favDrinks[el]}
-                  category={favDrinks[el].strAlcoholic}
-                />
-              </div>
-            );
-          }) }
+          Object.keys(favDrinks)
+            .slice(0, favDrinksN)
+            .map((el) => {
+              return (
+                <div className={styles.drink}>
+                  <RenderDrink
+                    el={favDrinks[el]}
+                    category={favDrinks[el].strAlcoholic}
+                  />
+                </div>
+              );
+            })}
+        {favLoading && (
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              width: "100%",
+              marginTop: "20px",
+            }}
+          >
+            <CircularProgress />
+          </div>
+        )}
+        {favDrinks && Object.keys(favDrinks).length > favDrinksN && (
+          <button
+            className={styles.showMore}
+            onClick={() => [setFavLoading(true),setTimeout(function(){setFavLoading(false);setFavDrinksN(favDrinksN+8)},2000)]}
+          >
+            Show more
+          </button>
+        )}
       </div>
       <AddNewDrink addDialog={addDialog} setAddDialog={setAddDialog} />
       <EditDrink

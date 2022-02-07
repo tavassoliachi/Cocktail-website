@@ -28,13 +28,13 @@
     text-transform: uppercase;
 }
 .regCont .css-1e83efs-MuiInputBase-root-MuiInput-root:before {
-    border-bottom:1px solid white !important;
+    border-bottom:1px solid white ;
 }
 .regCont .MuiInput-underline{
-    border-bottom:1px solid white !important;
+    border-bottom:1px solid white ;
 }
 .regCont .MuiInput-underline:hover{
-    border-bottom:1px solid white !important;
+    border-bottom:1px solid white ;
 }
 .regButton{
     width:100%;

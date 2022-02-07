@@ -31,7 +31,7 @@ export default function Login() {
           autoComplete="off"
           onChange={(e) => setEmail(e.target.value)}
           helperText={
-            user?.error?.includes("user") && (
+            user?.error?.includes("user") || user?.error?.includes("email")&& (
               <p style={{ width: "15rem" }}>{user.error}</p>
             )
           }
