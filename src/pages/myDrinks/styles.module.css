@@ -92,3 +92,12 @@
     margin:auto;
     margin-bottom: 7rem;
   }
+  .sort{
+    transform: scale(2);
+  }
+  .drinksHeader{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+  }

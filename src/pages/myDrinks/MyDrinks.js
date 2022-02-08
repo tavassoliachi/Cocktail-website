@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { userRecepies } from "../../redux/actions/fetchActions";
-import RenderDrink from "../homepage/components/RenderDrink";
 import GenerateDrink from "./components/generateDrink";
 import { Link } from "react-router-dom";
 import EditDrink from "./components/EditDrink";
@@ -11,14 +10,13 @@ import AddNewDrink from "./components/AddNewDrink";
 import styles from "./styles.module.css";
 import { CircularProgress } from "@mui/material";
 import { auth } from "../../firebase-config";
+import FavDrinks from "./components/FavDrinks";
 export default function MyDrinks() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [addDialog, setAddDialog] = useState(false);
   const [editDialog, setEditDialog] = useState(false);
-  const [favDrinksN, setFavDrinksN] = useState(8);
   const [myDrinksN, setMyDrinksN] = useState(8);
-  const [favLoading, setFavLoading] = useState(false);
   const [drinksLoading, setDrinksLoading] = useState(false);
   const [editData, setEditData] = useState({
     strDrink: "",
@@ -115,44 +113,8 @@ export default function MyDrinks() {
           </button>
         )}
       </div>
-      {favDrinks && Object.keys(favDrinks).length && (
-        <h1 className={styles.title}>Favourite Drinks</h1>
-      )}
-      <div className={styles.drinksCont}>
-        {favDrinks &&
-          Object.keys(favDrinks)
-            .slice(0, favDrinksN)
-            .map((el) => {
-              return (
-                <div className={styles.drink}>
-                  <RenderDrink
-                    el={favDrinks[el]}
-                    category={favDrinks[el].strAlcoholic}
-                  />
-                </div>
-              );
-            })}
-        {favLoading && (
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              width: "100%",
-              marginTop: "20px",
-            }}
-          >
-            <CircularProgress />
-          </div>
-        )}
-        {favDrinks && Object.keys(favDrinks).length > favDrinksN && (
-          <button
-            className={styles.showMore}
-            onClick={() => [setFavLoading(true),setTimeout(function(){setFavLoading(false);setFavDrinksN(favDrinksN+8)},2000)]}
-          >
-            Show more
-          </button>
-        )}
-      </div>
+          <FavDrinks/>
+
       <AddNewDrink addDialog={addDialog} setAddDialog={setAddDialog} />
       <EditDrink
         editDialog={editDialog}
