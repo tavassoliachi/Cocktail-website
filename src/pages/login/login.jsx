@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState,useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { authorization } from "../../redux/actions/fetchActions";
 import styles from "./styles.module.css";
@@ -8,14 +8,14 @@ export default function Login() {
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
   const dispatch = useDispatch();
-
+  const loginRef = useRef()
   const handleLogin = async () => {
-    document.getElementById("login").disabled = true;
+    loginRef.current.disabled = true
     dispatch(
       authorization({ type: "logIn", email: `${email}`, password: `${pass}` })
     );
     setTimeout(() => {
-      document.getElementById("login").disabled = false;
+      loginRef.current.disabled = false
     }, 1000);
   };
   const user = useSelector((data) => data.loginUser);
@@ -49,7 +49,7 @@ export default function Login() {
           }
         />
 
-        <button onClick={handleLogin} className={styles.authButton} id="login">
+        <button onClick={handleLogin} ref={loginRef} className={styles.authButton}>
           login
         </button>
       </div>

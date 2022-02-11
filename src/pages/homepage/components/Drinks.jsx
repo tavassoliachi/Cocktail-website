@@ -1,17 +1,19 @@
 import React from "react";
-import { useState } from "react";
+import { useState,useRef } from "react";
 import styles from "../styles.module.css";
 import RenderDrink from "./RenderDrink";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import CircularProgress from "@mui/material/CircularProgress";
 export default function Drinks({ drinks, thisCat, loading }) {
   const [drinkNum, setDrinkNum] = useState(8);
+  const loadingRef = useRef()
   const showMore = () => {
-    const spinner = document.getElementById(`spinner-${thisCat}`);
-    spinner.style.display = "unset";
+    const spinnerStyles = loadingRef.current.style
+    spinnerStyles.display = "unset"
     const loadDrinks = () => {
       setDrinkNum(drinkNum + 8);
-      spinner.style.display = "none";
+      spinnerStyles.display = "none";
+
     };
     setTimeout(() => {
       loadDrinks();
@@ -45,6 +47,7 @@ export default function Drinks({ drinks, thisCat, loading }) {
             </div>
             <CircularProgress
               style={{ display: "none" }}
+              ref={loadingRef}
               id={`spinner-${thisCat}`}
             />
             <button

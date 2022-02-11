@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import styles from "./styles.module.css";
 import { Link } from "react-router-dom";
 import Logo from "../assets/mainLogo.png";
@@ -11,6 +11,7 @@ export default function Header() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [search, setSearch] = useState(false);
+  const searchRef = useRef();
 
   function handleExit(e) {
     if (!e.target.id.includes("search")) {
@@ -25,7 +26,7 @@ export default function Header() {
     }
   }
   function handleRedirect() {
-    const input = document.getElementById("search").value;
+    const input = searchRef.current.value;
     input.length && navigate(`search?q=${input}`);
   }
   function handleChange(e) {
@@ -39,9 +40,7 @@ export default function Header() {
   useEffect(() => {
     if (search) {
       window.addEventListener("click", (e) => handleExit(e));
-      document
-        .getElementById("search")
-        .addEventListener("keyup", (e) => handleKey(e));
+      searchRef.current.addEventListener("keyup", (e) => handleKey(e));
     }
   }, [search]);
 
@@ -63,7 +62,7 @@ export default function Header() {
             </button>
           </>
         ) : (
-          <div>
+          <div className={styles.authCont}>
             <Link
               to="/login"
               style={{ left: "2rem" }}
@@ -90,6 +89,7 @@ export default function Header() {
       {search && (
         <input
           id="search"
+          ref={searchRef}
           onChange={(e) => handleChange(e)}
           className={styles.searchInput}
         />

@@ -1,6 +1,6 @@
 import './App.css';
 import Header from './components/Header';
-import Routes from './routes/Routes';
+import RoutesComponent from './routes/RoutesComponent';
 import { useDispatch, useSelector } from 'react-redux';
 import { auth } from './firebase-config';
 import { authorization } from './redux/actions/fetchActions';
@@ -16,10 +16,13 @@ function App() {
     }
     auth.currentUser && ['/register','/login'].includes(window.location.pathname) && navigate('/')
   })
+
   return (
     <div className="App" style={{paddingBottom:"50px"}}>
         <Header/>
-        <Routes/>
+        <div  style={{marginTop:"80px"}}>
+          <RoutesComponent/>
+        </div>
     </div>
   );
 }

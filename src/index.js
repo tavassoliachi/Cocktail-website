@@ -6,6 +6,8 @@ import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { store } from './redux/store/store';
 import reportWebVitals from './reportWebVitals';
+import '../node_modules/font-awesome/css/font-awesome.min.css'; 
+import 'font-awesome/css/font-awesome.min.css';
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>

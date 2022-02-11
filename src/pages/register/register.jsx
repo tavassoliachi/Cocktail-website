@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React,{useState,useRef} from 'react';
 import { useDispatch } from 'react-redux';
 import { authorization } from '../../redux/actions/fetchActions';
 import styles from "./styles.module.css"
@@ -11,11 +11,12 @@ export default function Register() {
     const [pass,setPass] = useState('')
     const [rePass,setRePass] = useState('')
     const dispatch = useDispatch()
+    const registerRef = useRef()
     const handleRegister= async ()=>{
-            document.getElementById("register").disabled=true
+            registerRef.current.disabled = true
             dispatch(authorization({type:"register",email:`${email}`,password:`${pass}`}))
             setTimeout(() => {
-                document.getElementById("register").disabled = false;
+                registerRef.current.disabled = false
               }, 1000);
     }
     const data = useSelector(data => data?.registerUser)
@@ -51,7 +52,7 @@ export default function Register() {
                         
 
 
-                <button onClick={handleRegister} disabled={!Boolean(rePass==pass)} className={styles.regButton} id="register">register</button>
+                <button onClick={handleRegister} disabled={!Boolean(rePass==pass)} className={styles.regButton} ref={registerRef}>register</button>
             </div>
         </div>;
 }

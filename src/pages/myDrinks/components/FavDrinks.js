@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import RenderDrink from "../../homepage/components/RenderDrink";
 import styles from "../styles.module.css";
 import { CircularProgress } from "@mui/material";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import SortByAlphaIcon from "@mui/icons-material/SortByAlpha";
 export default function FavDrinks() {
   const favDrinks = useSelector((data) => data.userDrinks.data?.favourites);
@@ -10,15 +11,15 @@ export default function FavDrinks() {
   const [favLoading, setFavLoading] = useState(false);
   const [favDrinkKeys, setFavDrinkKeys] = useState({
     drinks: [],
-    sorted: false,
+    sorted: "0",
   });
 
   const sortedList = favDrinks && Object.keys(favDrinks).sort(sortFavDrinks);
+  const sorterdListBackwards = sortedList && [...sortedList].reverse();
   const list = favDrinks && Object.keys(favDrinks);
-  
   useEffect(() => {
     favDrinks &&
-      setFavDrinkKeys({ drinks: Object.keys(favDrinks), sorted: false });
+      setFavDrinkKeys({ drinks: Object.keys(favDrinks), sorted: "0" });
   }, [favDrinks]);
 
   function sortFavDrinks(a, b) {
@@ -30,21 +31,34 @@ export default function FavDrinks() {
     }
     return 0;
   }
+  const handleSortChange = () => {
+    switch (favDrinkKeys.sorted) {
+      case "0":
+        setFavDrinkKeys({ drinks: sortedList, sorted: "1" });
+        break;
+      case "1":
+        setFavDrinkKeys({ drinks: sorterdListBackwards, sorted: "2" });
+        break;
+      case "2":
+        setFavDrinkKeys({ drinks: Object.keys(favDrinks), sorted: "0" });
+        break;
+    }
+  };
   return (
     <div>
       {favDrinks && Object.keys(favDrinks).length && (
         <div className={styles.drinksHeader}>
           <h1 className={styles.title}>Favourite Drinks</h1>
-          <SortByAlphaIcon
-            className={styles.sort}
-            style={{ fill: favDrinkKeys.sorted ? "red" : "#06273A" }}
-            onClick={() =>
-              setFavDrinkKeys(
-                favDrinkKeys.sorted
-                  ? { drinks: list, sorted: false }
-                  : { drinks: sortedList, sorted: true }
-              )
-            }
+          <i
+            className={`fa fa-${
+              favDrinkKeys.sorted === "0"
+                ? "sort"
+                : favDrinkKeys.sorted === "1"
+                ? "sort-up"
+                : "sort-down"
+            }`}
+            onClick={handleSortChange}
+            style={{marginLeft:"1rem",paddingTop:".5rem",fontSize:"1.5rem"}}
           />
         </div>
       )}

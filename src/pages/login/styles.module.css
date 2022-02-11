@@ -3,7 +3,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 50px;
+    margin-top: 10rem;
 }
 .regCont{
     background-color: #06273A;;
@@ -15,7 +15,7 @@
     border-radius: 5px;
 }
 .regCont input{
-    width: 15rem;
+    width: 90%;
 }
 .regCont >div{
     margin:10px 0;
@@ -37,8 +37,8 @@
     border-bottom:1px solid white ;
 }
 .authButton{
-    width:30%;
-    padding:10px 0;
+    width: max-content;
+    padding:10px;
     color:#06273A;
     background-color: white;
     border:unset;
