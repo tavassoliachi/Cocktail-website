@@ -58,7 +58,7 @@ export default function FavDrinks() {
                 : "sort-down"
             }`}
             onClick={handleSortChange}
-            style={{marginLeft:"1rem",paddingTop:".5rem",fontSize:"1.5rem"}}
+            style={{marginLeft:"1rem",paddingTop:".5rem",fontSize:"1.5rem",color:"red"}}
           />
         </div>
       )}
