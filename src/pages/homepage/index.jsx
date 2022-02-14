@@ -8,6 +8,7 @@ import Drinks from './components/Drinks';
 import subLogo from "../../assets/Capture.PNG";
 import { debounce } from 'lodash';
 import RandomDrinks from './components/RandomDrinks';
+import {Helmet} from "react-helmet";
 export default function Homepage() {
     const dispatch = useDispatch()
     const alc = useSelector((data)=>{return data.alcoholicData})
@@ -33,7 +34,9 @@ export default function Homepage() {
 
     const user = useSelector((data)=>data.loginUser.data)
   return <div className={styles.mainCont}>
-
+            <Helmet>
+                <title>Homepage</title>
+            </Helmet>
     <div className={styles.randomSection} >
         <div style={{width:"100%",display:'flex',justifyContent:"center",allignItems:'center',marginBottom:"20px"}}>
             <img src={subLogo} style={{width:'70%',maxHeight:"150px",objectFit:"contain",transform:"translateX(-5px)"}} alt=''/>

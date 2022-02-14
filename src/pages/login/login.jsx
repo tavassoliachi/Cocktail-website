@@ -4,6 +4,7 @@ import { authorization } from "../../redux/actions/fetchActions";
 import styles from "./styles.module.css";
 import "./styles.css";
 import TextField from "@mui/material/TextField";
+import {Helmet} from "react-helmet";
 export default function Login() {
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
@@ -21,6 +22,9 @@ export default function Login() {
   const user = useSelector((data) => data.loginUser);
   return (
     <div className={styles.mainCont}>
+      <Helmet>
+        <title>Login</title>
+      </Helmet>
       <div className={styles.regCont} id="inputs-mui">
         <h1 className={styles.title}>login</h1>
 

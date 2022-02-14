@@ -11,6 +11,7 @@ import styles from "./styles.module.css";
 import { CircularProgress } from "@mui/material";
 import { auth } from "../../firebase-config";
 import FavDrinks from "./components/FavDrinks";
+import { Helmet } from "react-helmet";
 export default function MyDrinks() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -57,7 +58,10 @@ export default function MyDrinks() {
   }, []);
 
   return (
-    <div>
+    <div style={{display:"flex",flexDirection:"column"}}>
+      <Helmet>
+        <title>My Drinks</title>
+      </Helmet>
       <div
         style={{
           display: "flex",

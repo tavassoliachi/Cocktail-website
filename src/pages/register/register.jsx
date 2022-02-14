@@ -4,6 +4,7 @@ import { authorization } from '../../redux/actions/fetchActions';
 import styles from "./styles.module.css"
 import { useSelector } from 'react-redux';
 import "./styles.css"
+import {Helmet} from "react-helmet";
 import TextField from '@mui/material/TextField';
 
 export default function Register() {
@@ -21,7 +22,9 @@ export default function Register() {
     }
     const data = useSelector(data => data?.registerUser)
   return <div className={styles.mainCont}>
-
+        <Helmet>
+            <title>Register</title>
+        </Helmet>
             <div className={styles.regCont} id='inputs-mui'>
                 <h1 className={styles.title}>registration</h1>
 
