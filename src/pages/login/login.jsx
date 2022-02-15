@@ -5,9 +5,11 @@ import styles from "./styles.module.css";
 import "./styles.css";
 import TextField from "@mui/material/TextField";
 import {Helmet} from "react-helmet";
+import {useTranslation} from "react-i18next"
 export default function Login() {
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
+  const {t} = useTranslation()
   const dispatch = useDispatch();
   const loginRef = useRef()
   const handleLogin = async () => {
@@ -26,11 +28,11 @@ export default function Login() {
         <title>Login</title>
       </Helmet>
       <div className={styles.regCont} id="inputs-mui">
-        <h1 className={styles.title}>login</h1>
+        <h1 className={styles.title}>{t('login')}</h1>
 
         <TextField
           error={user?.error?.includes("mail")}
-          label="Email"
+          label={t('mail')}
           value={email}
           autoComplete="off"
           onChange={(e) => setEmail(e.target.value)}
@@ -42,7 +44,7 @@ export default function Login() {
         />
         <TextField
           error={user?.error?.includes("password")}
-          label="Password"
+          label={t('password')}
           value={pass}
           onChange={(e) => setPass(e.target.value)}
           type={"password"}
@@ -54,7 +56,7 @@ export default function Login() {
         />
 
         <button onClick={handleLogin} ref={loginRef} className={styles.authButton}>
-          login
+        {t('submit')}
         </button>
       </div>
     </div>

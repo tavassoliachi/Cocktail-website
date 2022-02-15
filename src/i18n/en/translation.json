@@ -6,9 +6,17 @@
     "ingredients":"Ingredients",
     "instructions":"Instructions",
     "showMore":"Show More",
+    "authToFav":"You need to be Authorized to add drink to favourites!",
 
     "login":"Log In",
     "logout":"Log Out",
-    "register":"Register"
+    "register":"Register",
+    "registration":"Registration",
+    "mail":"Email",
+    "password":"Password",
+    "rePassword":"Repeat Password",
+
+    "submit":"Submit"
+    
 
   }

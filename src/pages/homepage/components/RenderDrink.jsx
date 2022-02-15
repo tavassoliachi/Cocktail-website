@@ -76,14 +76,14 @@ export default function RenderDrink({ el, category }) {
       >
         <Box sx={style}>
           <Typography id="modal-modal-title" variant="h6" component="h2">
-            You need to be Authorized to add drink to favourites
+            {t('authToFav')}
           </Typography>
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
             <Link to="/login" className={styles.authBTN}>
-              LOGIN
+            {t('login')}
             </Link>{" "}
             <Link to="/register" className={styles.authBTN}>
-              REGISTER
+            {t('register')}
             </Link>
           </Typography>
         </Box>
