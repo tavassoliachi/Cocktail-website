@@ -70,7 +70,7 @@ export default function FavDrinks() {
               <div className={styles.drink}>
                 <RenderDrink
                   el={favDrinks[el]}
-                  category={favDrinks[el].strAlcoholic}
+                  category={favDrinks[el]?.strAlcoholic}
                 />
               </div>
             );
