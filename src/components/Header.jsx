@@ -8,6 +8,7 @@ import { useDispatch } from "react-redux";
 import { authorization } from "../redux/actions/fetchActions";
 import SearchIcon from "@mui/icons-material/Search";
 import {useTranslation} from 'react-i18next'
+import { auth } from "../firebase-config";
 import flagGE from "../assets/flags/ge.png"
 import flagEN from "../assets/flags/en.png"
 export default function Header() {
@@ -46,6 +47,7 @@ export default function Header() {
       searchRef.current.addEventListener("keyup", (e) => handleKey(e));
     }
   }, [search]);
+
 
   const user = useSelector((data) => data.loginUser.data);
   const changeLanguage = (value) =>{

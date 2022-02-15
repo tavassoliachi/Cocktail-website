@@ -55,7 +55,7 @@ export default function MyDrinks() {
   }
   useEffect(() => {
     !auth.currentUser && navigate("/");
-  }, []);
+  }, [auth.currentUser]);
 
   return (
     <div style={{display:"flex",flexDirection:"column"}}>
