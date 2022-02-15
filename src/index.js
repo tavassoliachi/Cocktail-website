@@ -8,6 +8,8 @@ import { store } from './redux/store/store';
 import reportWebVitals from './reportWebVitals';
 import '../node_modules/font-awesome/css/font-awesome.min.css'; 
 import 'font-awesome/css/font-awesome.min.css';
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>

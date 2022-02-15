@@ -1,4 +1,5 @@
 import './App.css';
+import 'swiper/css';
 import Header from './components/Header';
 import RoutesComponent from './routes/RoutesComponent';
 import { useDispatch, useSelector } from 'react-redux';

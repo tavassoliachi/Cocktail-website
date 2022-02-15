@@ -9,6 +9,8 @@ import subLogo from "../../assets/Capture.PNG";
 import { debounce } from 'lodash';
 import RandomDrinks from './components/RandomDrinks';
 import {Helmet} from "react-helmet";
+import DrinksSwiper from './components/DrinksSwiper';
+// import SwipeByLook from './components/SwipeByLook';
 export default function Homepage() {
     const dispatch = useDispatch()
     const alc = useSelector((data)=>{return data.alcoholicData})
@@ -25,7 +27,7 @@ export default function Homepage() {
 
 
     useEffect(()=>{
-        dispatch(fetchRandomDrinks(3)) 
+        dispatch(fetchRandomDrinks(10)) 
         const alc = debounce(()=>dispatch(fetchDrinks("alcoholic")),200)
         const nonAlc = debounce(()=>dispatch(fetchDrinks("nonAlcoholic")),400)
         alc()
@@ -46,9 +48,10 @@ export default function Homepage() {
     </div>
 
         <Drinks drinks={alcData} thisCat="alcoholic" loading={alcLoading}/>
+        
+        {RandomDrinks && <DrinksSwiper  randomDrinks={randomDrinksData?.slice(3,randomDrinksData.length)} />}
 
         <Drinks drinks={nonAlcData} thisCat="nonAlcoholic" loading={nonAlcLoading}/>
-
         
          </div>
 }
