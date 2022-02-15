@@ -2,9 +2,10 @@ import React, { useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper";
 import styles from "../styles.module.css";
-
+import {useTranslation} from "react-i18next"
 function DrinksSwiper({ randomDrinks }) {
   const [lang, setLang] = useState("strInstructions");
+  const {t} = useTranslation()
   return (
     <div className={styles.containerRand}>
       <Swiper
@@ -28,7 +29,7 @@ function DrinksSwiper({ randomDrinks }) {
               <div style={{ width: "40%" }}>
                 <h1>{el.strDrink}</h1>
                 <div>
-                  <div className={styles.stepsTitle}>Instructions</div>
+                  <div className={styles.stepsTitle}>{t('instructions')}</div>
                   {instructions.map((n) => {
                     const active = lang === n;
 
@@ -58,7 +59,7 @@ function DrinksSwiper({ randomDrinks }) {
                 </div>
               </div>
               <div>
-                <h1>Ingredients</h1>
+                <h1>{t('ingredients')}</h1>
 
                 <div>
                   {Object.keys(el)

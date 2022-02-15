@@ -6,9 +6,10 @@ import { useSelector } from "react-redux";
 import styles from "../styles.module.css";
 import { styled } from "@mui/material/styles";
 import Tooltip, { tooltipClasses } from "@mui/material/Tooltip";
+import {useTranslation} from "react-i18next"
 
 export default function Ingredients({ drink }) {
-
+  const {t,i18n} = useTranslation()
   useEffect(() => {
     ingredientDetails();
   }, []);
@@ -62,7 +63,7 @@ export default function Ingredients({ drink }) {
     <div>
       {drink && data && (
         <div>
-          <div className={styles.stepsTitle}>Ingredients</div>
+          <div className={styles.stepsTitle}>{t('ingredients')}</div>
           {Object.keys(drink)
             .filter((el) => el.includes("strIngredient") && drink[el])
             .map((el, index) => {

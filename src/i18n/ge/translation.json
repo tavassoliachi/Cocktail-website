@@ -1,0 +1,14 @@
+{
+    "alcoholic": "ალკოჰოლური",
+    "nonAlcoholic": "უალკოჰოლო",
+    "cocktail": "კოქტეილი",
+    "myDrinks":"ჩემი სახმელები",
+    "ingredients":"ინგრედიენტები",
+    "instructions":"ინტრუქცია",
+    "showMore":"მეტის ნახვა",
+
+    "login":"შესვლა",
+    "logout":"გამოსვლა",
+    "register":"რეგისტრაცია"
+
+  }

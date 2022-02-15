@@ -17,7 +17,6 @@ function App() {
     }
     auth.currentUser && ['/register','/login'].includes(window.location.pathname) && navigate('/')
   })
-
   return (
     <div className="App" style={{paddingBottom:"50px"}}>
         <Header/>

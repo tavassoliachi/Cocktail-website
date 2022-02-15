@@ -7,12 +7,15 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { authorization } from "../redux/actions/fetchActions";
 import SearchIcon from "@mui/icons-material/Search";
+import {useTranslation} from 'react-i18next'
+import flagGE from "../assets/flags/ge.png"
+import flagEN from "../assets/flags/en.png"
 export default function Header() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [search, setSearch] = useState(false);
   const searchRef = useRef();
-
+  const {i18n,t} = useTranslation()
   function handleExit(e) {
     if (!e.target.id.includes("search")) {
       setSearch(false);
@@ -45,20 +48,23 @@ export default function Header() {
   }, [search]);
 
   const user = useSelector((data) => data.loginUser.data);
+  const changeLanguage = (value) =>{
+    i18n.changeLanguage(value)
+  }
   return (
     <div className={styles.header}>
       <div style={{ color: "white", position: "absolute", left: "2rem" }}>
         {user?.user?.email ? (
           <>
             <Link to="/myDrinks" className={styles.myDrinks}>
-              MY DRINKS{" "}
+              {t('myDrinks')}{" "}
             </Link>
             <button
               onClick={() => dispatch(authorization({ type: "logOut" }))}
               className={styles.authBtn}
               style={{ left: "1rem" }}
             >
-              Log Out
+              {t("logout")}
             </button>
           </>
         ) : (
@@ -68,18 +74,23 @@ export default function Header() {
               style={{ left: "2rem" }}
               className={styles.authBtn}
             >
-              Login
+              {t("login")}
             </Link>
             <Link to="/register" className={styles.authBtn}>
-              Register
+            {t("register")}
             </Link>
           </div>
         )}
       </div>
 
       <Link to="/">
-        <img src={Logo} style={{ height: "50px" }} alt="logo" />
+        <img src={Logo} style={{ height: "50px" }} alt="logo" className={styles.logo}/>
       </Link>
+      <div className={styles.langCont} >
+        {[{img:flagGE,value:"ge"},{img:flagEN,value:"en"}].map((el)=>{
+          return <img className={styles.lang} src={el.img} style={{opacity:i18n.language===el.value ? ".3" : "1"}} onClick={()=>changeLanguage(el.value)}/>
+        })}
+      </div>
       <SearchIcon
         id="searchIcon"
         className={styles.search}

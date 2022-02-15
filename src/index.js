@@ -10,6 +10,7 @@ import '../node_modules/font-awesome/css/font-awesome.min.css';
 import 'font-awesome/css/font-awesome.min.css';
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+import "./i18n/i18n"
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>

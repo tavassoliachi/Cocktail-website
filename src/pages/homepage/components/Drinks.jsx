@@ -4,8 +4,10 @@ import styles from "../styles.module.css";
 import RenderDrink from "./RenderDrink";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import CircularProgress from "@mui/material/CircularProgress";
+import {useTranslation} from "react-i18next"
 export default function Drinks({ drinks, thisCat, loading }) {
   const [drinkNum, setDrinkNum] = useState(8);
+  const {t} = useTranslation();
   const loadingRef = useRef()
   const showMore = () => {
     const spinnerStyles = loadingRef.current.style
@@ -55,7 +57,7 @@ export default function Drinks({ drinks, thisCat, loading }) {
               className={styles.showMore}
               id="showMore"
             >
-              SHOW MORE
+              {t("showMore")}
             </button>
           </div>
         ) : (

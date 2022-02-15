@@ -1,0 +1,14 @@
+{
+    "alcoholic": "Alcoholic",
+    "nonAlcoholic": "NONALCOHOLIC",
+    "cocktail":"COCKTAIL",
+    "myDrinks":"My Drinks",
+    "ingredients":"Ingredients",
+    "instructions":"Instructions",
+    "showMore":"Show More",
+
+    "login":"Log In",
+    "logout":"Log Out",
+    "register":"Register"
+
+  }

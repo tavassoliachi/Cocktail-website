@@ -1,11 +1,13 @@
-import React,{useState} from 'react';
+import React,{useEffect, useState} from 'react';
 import { CircularProgress } from '@mui/material';
 import { Link } from 'react-router-dom';
 import Ingredients from '../pages/drink/components/ingredients';
 import styles from "../pages/drink/styles.module.css"
+import {useTranslation} from "react-i18next"
 export default function DrinkComponent({drink,loading,id}) {
     const [lang,setLang] = useState("strInstructions")
     const instructions = drink && Object.keys(drink).filter((el)=>el.includes('strInstructions'))
+    const {t} = useTranslation()
     return <div className={styles.cont}>
         
     {loading ? <div style={{display:"flex",justifyContent:"center"}}><CircularProgress/></div> : 
@@ -23,7 +25,7 @@ export default function DrinkComponent({drink,loading,id}) {
                 {drink && <Ingredients drink={drink}/>}
 
                 <div>
-                    <div className={styles.stepsTitle}>Instructions</div>
+                    <div className={styles.stepsTitle}>{t('instructions')}</div>
                 {instructions.map((el)=>{
                     const active = lang===el
                     return <>

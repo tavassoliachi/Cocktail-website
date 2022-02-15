@@ -10,7 +10,7 @@ import { debounce } from 'lodash';
 import RandomDrinks from './components/RandomDrinks';
 import {Helmet} from "react-helmet";
 import DrinksSwiper from './components/DrinksSwiper';
-// import SwipeByLook from './components/SwipeByLook';
+import {useTranslation} from "react-i18next"
 export default function Homepage() {
     const dispatch = useDispatch()
     const alc = useSelector((data)=>{return data.alcoholicData})
@@ -25,7 +25,7 @@ export default function Homepage() {
     const randomDrinksData = randomDrinks.data
     const randomDrinksLoading = randomDrinks?.loading
 
-
+    const {t,i18n} = useTranslation()
     useEffect(()=>{
         dispatch(fetchRandomDrinks(10)) 
         const alc = debounce(()=>dispatch(fetchDrinks("alcoholic")),200)
@@ -33,7 +33,6 @@ export default function Homepage() {
         alc()
         nonAlc()
     },[])
-
     const user = useSelector((data)=>data.loginUser.data)
   return <div className={styles.mainCont}>
             <Helmet>
@@ -47,11 +46,11 @@ export default function Homepage() {
         {randomDrinksData && ( <RandomDrinks randomDrinks={randomDrinksData} loading={randomDrinksLoading}/> )}
     </div>
 
-        <Drinks drinks={alcData} thisCat="alcoholic" loading={alcLoading}/>
+        <Drinks drinks={alcData} thisCat={t('alcoholic')} loading={alcLoading}/>
         
         {RandomDrinks && <DrinksSwiper  randomDrinks={randomDrinksData?.slice(3,randomDrinksData.length)} />}
 
-        <Drinks drinks={nonAlcData} thisCat="nonAlcoholic" loading={nonAlcLoading}/>
+        <Drinks drinks={nonAlcData} thisCat={t('nonAlcoholic')} loading={nonAlcLoading}/>
         
          </div>
 }

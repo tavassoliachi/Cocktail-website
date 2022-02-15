@@ -12,7 +12,9 @@ import { Modal } from "@mui/material";
 import StarIcon from "@mui/icons-material/Star";
 import { Typography, Box } from "@mui/material";
 import CircularProgress from "@mui/material/CircularProgress";
+import {useTranslation} from 'react-i18next'
 export default function RenderDrink({ el, category }) {
+  const {t} = useTranslation()
   const data = useSelector((data) => data.userDrinks?.data?.favourites);
   const [authModal, setAuthModal] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -97,7 +99,7 @@ export default function RenderDrink({ el, category }) {
             style={{ color: "#9D2A2C", width: "100%", textAlign: "start" }}
             className={styles.cocktailCat}
           >
-            {category} cocktail
+            {category} {t('cocktail')}
           </p>
           <p
             style={{ textAlign: "start", width: "%", margin: "0" }}
