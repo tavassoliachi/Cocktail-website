@@ -88,10 +88,10 @@ export default function RenderDrink({ el, category }) {
           </Typography>
         </Box>
       </Modal>
-      <Link to={`/drink?id=${el.idDrink}`} className={styles.link}>
+      <Link to={`/drink?id=${el?.idDrink}`} className={styles.link}>
         <div className={styles.drink}>
           <img
-            src={el.strDrinkThumb}
+            src={el?.strDrinkThumb}
             className={styles.drinkImg}
             alt="cocktail"
           />
@@ -105,27 +105,27 @@ export default function RenderDrink({ el, category }) {
             style={{ textAlign: "start", width: "%", margin: "0" }}
             className={styles.cocktailTitle}
           >
-            {el.strDrink}
+            {el?.strDrink}
           </p>
         </div>
       </Link>
       {favKeys && !loading ? (
-        favKeys?.includes(`${el.idDrink}`) ? (
+        favKeys?.includes(`${el?.idDrink}`) ? (
           <StarIcon
             className={styles.star}
-            id={`star_${el.idDrink}`}
+            id={`star_${el?.idDrink}`}
             onClick={() => handleUnFav()}
           />
         ) : (
           <StarOutlineIcon
             className={styles.star}
-            id={`star_${el.idDrink}`}
+            id={`star_${el?.idDrink}`}
             onClick={() => handleFav()}
           />
         )
       ) : (
         <CircularProgress
-          id={`loading_${el.idDrink}`}
+          id={`loading_${el?.idDrink}`}
           size={25}
           className={styles.loading}
         />
