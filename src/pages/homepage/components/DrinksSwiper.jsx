@@ -2,10 +2,13 @@ import React, { useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper";
 import styles from "../styles.module.css";
-import {useTranslation} from "react-i18next"
+import "../styles.css";
+import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 function DrinksSwiper({ randomDrinks }) {
   const [lang, setLang] = useState("strInstructions");
-  const {t} = useTranslation()
+  const { t } = useTranslation();
+  const navigate = useNavigate()
   return (
     <div className={styles.containerRand}>
       <Swiper
@@ -15,21 +18,26 @@ function DrinksSwiper({ randomDrinks }) {
         loop
         navigation
         pagination={{ clickable: true }}
+        className="customSwiper"
       >
         {randomDrinks?.map((el) => {
           const instructions = Object.keys(el).filter((elem) =>
             elem.includes("strInstructions")
           );
           return (
-            <SwiperSlide className={styles.customSlide}>
+            <SwiperSlide className={styles.customSlide} onClick={()=>navigate(`/drink?id=${el.id}`)}>
               <img
                 src={el.strDrinkThumb}
-                style={{ height: "23rem", borderRadius: "15px" }}
+                style={{
+                  height: "20rem",
+                  objectFit: "contain",
+                  borderRadius: "15px",
+                }}
               />
-              <div style={{ width: "40%" }}>
+              <div className={styles.swiperSubCont}>
                 <h1>{el.strDrink}</h1>
-                <div>
-                  <div className={styles.stepsTitle}>{t('instructions')}</div>
+                <div className={styles.ranInstructions}>
+                  <div className={styles.stepsTitle}>{t("instructions")}</div>
                   {instructions.map((n) => {
                     const active = lang === n;
 
@@ -53,13 +61,13 @@ function DrinksSwiper({ randomDrinks }) {
                     );
                   })}
 
-                  <h1 className={styles.steps} style={{ width: "60%" }}>
+                  <h1 className={styles.steps}>
                     {el[lang]}
                   </h1>
                 </div>
               </div>
-              <div>
-                <h1>{t('ingredients')}</h1>
+              <div className={styles.ranIngredients}>
+                <h1>{t("ingredients")}</h1>
 
                 <div>
                   {Object.keys(el)

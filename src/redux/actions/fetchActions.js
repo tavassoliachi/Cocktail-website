@@ -122,29 +122,30 @@ export const fetchSingleDrink = (id) => async (dispatch) => {
 export const fetchRandomDrinks = (n) => async (dispatch) => {
     var drinks = []
     var loopN = 0;
+    var done = false;
     dispatch({type:`${randomDrink.request}`})
     async function handleFetch(){
         const {data,error} = await api.get(`${randomDrinkURL}`)
-        drinks.push(data.drinks[0])
-        console.log(drinks)
-        loopN==n && finalStep()
-        return {data,error}
-    }
-    
-    while(loopN!==n){
-        setTimeout(() => {
-            handleFetch()
-        },100*loopN);
-        loopN++;
+        loopN = loopN+1
+        drinks.push(data.drinks[0])    
+        if(loopN == n){finalStep()}
     }
     const finalStep = () =>{
+
         if(drinks.length === n){
             dispatch({type:`${randomDrink.success}`,payload:drinks})
+
         }else{
-            console.log(drinks.length,loopN,drinks)
+            console.log(drinks.length)
             dispatch({type:`${randomDrink.fail}`,message:"Error"})
         }
     }
+    for(var i=1;i!==n+1;i++){
+        setTimeout(() => {
+            handleFetch()
+        },100*i);
+    }
+
 
 }
 export const fetchSearchResult = (keyword) => async (dispatch) =>{

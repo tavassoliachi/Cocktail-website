@@ -130,4 +130,7 @@ margin-right: 10px;
     .langCont{
         transform:translateX(8.5rem);
     }
+    .subHeader{
+        top:4.8rem;
+    }
 }

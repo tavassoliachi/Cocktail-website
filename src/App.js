@@ -7,7 +7,10 @@ import { auth } from './firebase-config';
 import { authorization } from './redux/actions/fetchActions';
 import { useNavigate } from 'react-router-dom';
 import {onAuthStateChanged} from "firebase/auth"
+import { useTranslation } from 'react-i18next';
+import { useEffect } from 'react';
 function App() {
+  const {i18n} = useTranslation()
   const navigate = useNavigate()
   const dispatch = useDispatch()
   const user = useSelector((data)=>data.loginUser.email)
@@ -17,6 +20,15 @@ function App() {
     }
     auth.currentUser && ['/register','/login'].includes(window.location.pathname) && navigate('/')
   })
+  // useEffect(()=>{
+  //   const lang = localStorage.getItem('lang')
+  //   if(lang){
+  //     if(i18n.language !== lang){
+  //       i18n.changeLanguage(lang)
+  //     }
+  //   }
+  // },[])
+
   return (
     <div className="App" style={{paddingBottom:"50px"}}>
         <Header/>

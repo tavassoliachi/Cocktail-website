@@ -51,11 +51,12 @@ export default function Header() {
 
   const user = useSelector((data) => data.loginUser.data);
   const changeLanguage = (value) =>{
-    i18n.changeLanguage(value)
+    i18n.changeLanguage(value);
+    localStorage.setItem("lang",value)
   }
   return (
     <div className={styles.header}>
-      <div style={{ color: "white", position: "absolute", left: "2rem" }}>
+      <div className={styles.subHeader} style={{ color: "white", position: "absolute", left: "2rem" }}>
         {user?.user?.email ? (
           <>
             <Link to="/myDrinks" className={styles.myDrinks}>

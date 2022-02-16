@@ -3,7 +3,6 @@ import { initReactI18next } from "react-i18next";
 
 
 // Importing translation files
-
 import translationEN from "./en/translation.json";
 import translationGE from "./ge/translation.json";
 
@@ -24,7 +23,7 @@ i18n
   .use(initReactI18next)
   .init({
     resources,
-    lng:"en", //default language
+    lng:`${localStorage.getItem('lang') || 'en'}`, //default language
     keySeparator: false,
     interpolation: {
       escapeValue: false,
