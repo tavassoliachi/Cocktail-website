@@ -121,16 +121,31 @@ export const fetchSingleDrink = (id) => async (dispatch) => {
 }
 export const fetchRandomDrinks = (n) => async (dispatch) => {
     var drinks = []
+    var loopN = 0;
     dispatch({type:`${randomDrink.request}`})
-    while(drinks.length!==n){
-        const {data} = await api.get(`${randomDrinkURL}`)
+    async function handleFetch(){
+        const {data,error} = await api.get(`${randomDrinkURL}`)
         drinks.push(data.drinks[0])
+        console.log(drinks)
+        loopN==n && finalStep()
+        return {data,error}
     }
-    if(drinks.length === n){
-        dispatch({type:`${randomDrink.success}`,payload:drinks})
-    }else{
-        dispatch({type:`${randomDrink.fail}`,message:"Error"})
+    
+    while(loopN!==n){
+        setTimeout(() => {
+            handleFetch()
+        },100*loopN);
+        loopN++;
     }
+    const finalStep = () =>{
+        if(drinks.length === n){
+            dispatch({type:`${randomDrink.success}`,payload:drinks})
+        }else{
+            console.log(drinks.length,loopN,drinks)
+            dispatch({type:`${randomDrink.fail}`,message:"Error"})
+        }
+    }
+
 }
 export const fetchSearchResult = (keyword) => async (dispatch) =>{
     dispatch({type:`${search.request}`})
