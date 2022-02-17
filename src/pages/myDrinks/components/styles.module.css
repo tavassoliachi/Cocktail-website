@@ -45,3 +45,74 @@
 .drink:hover > img{
     opacity: 0.6;
 }
+.questionCont{
+    display: flex;
+    flex-direction: row;
+    justify-content:center;
+    width: 100%;
+    align-items: center;
+    height: 100%;
+    position: relative
+}
+.questionTitle{
+  color: white;
+  margin: 0;
+}
+.questionTitle2{
+  color: white;
+  margin: 0;
+  font-weight: normal;
+  font-size: 1.5rem;
+}
+
+.questionSubCont{
+  margin-left: 10rem;
+}
+.options{
+  color: black;
+  margin: 1rem;
+  padding: .3rem .9rem;
+  width: 90%;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor:pointer
+}
+.score{
+  margin:0;
+  font-weight: normal;
+  right:2rem;
+  font-size: 1.5rem;
+  top:1rem;
+  color: white;
+  position: absolute;
+}
+.quizImage{
+  width: 20%;
+  min-width: 300px;
+  margin: 1rem;
+  object-fit: contain;
+  border-radius: 20px;
+}
+.quizCont{
+  background-color: #06273A;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 5rem 0;
+  min-height: 25rem;
+  width: 100%;
+}
+.quizTitle{
+  text-align: center;
+  width: 100%;
+  color: white;
+  margin-top: 5rem;
+}
+@media only screen and (max-width: 850px) {
+  .questionCont{
+      flex-direction: column;
+  }
+  .question{
+    margin-left: 0;
+  }
+}

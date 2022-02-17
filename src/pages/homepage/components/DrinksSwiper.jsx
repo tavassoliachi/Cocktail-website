@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination } from "swiper";
+import { EffectCards, EffectCoverflow, EffectCreative, EffectCube, EffectFlip, Navigation, Pagination } from "swiper";
 import styles from "../styles.module.css";
 import "../styles.css";
 import { useNavigate } from "react-router-dom";
@@ -14,8 +14,9 @@ function DrinksSwiper({ randomDrinks }) {
       <Swiper
         spaceBetween={50}
         slidesPerView={1}
-        modules={[Navigation, Pagination]}
+        modules={[Navigation, Pagination,EffectCoverflow]}
         loop
+        effect="coverflow"
         navigation
         pagination={{ clickable: true }}
         className="customSwiper"
@@ -25,7 +26,7 @@ function DrinksSwiper({ randomDrinks }) {
             elem.includes("strInstructions")
           );
           return (
-            <SwiperSlide className={styles.customSlide} onClick={()=>navigate(`/drink?id=${el.id}`)}>
+            <SwiperSlide className={styles.customSlide} >
               <img
                 src={el.strDrinkThumb}
                 style={{

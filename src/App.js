@@ -8,6 +8,9 @@ import { authorization } from './redux/actions/fetchActions';
 import { useNavigate } from 'react-router-dom';
 import {onAuthStateChanged} from "firebase/auth"
 import { useTranslation } from 'react-i18next';
+import { fetchDrinks } from './redux/actions/fetchActions';
+import { fetchRandomDrinks } from './redux/actions/fetchActions';
+import { debounce } from 'lodash';
 import { useEffect } from 'react';
 function App() {
   const {i18n} = useTranslation()
@@ -20,14 +23,13 @@ function App() {
     }
     auth.currentUser && ['/register','/login'].includes(window.location.pathname) && navigate('/')
   })
-  // useEffect(()=>{
-  //   const lang = localStorage.getItem('lang')
-  //   if(lang){
-  //     if(i18n.language !== lang){
-  //       i18n.changeLanguage(lang)
-  //     }
-  //   }
-  // },[])
+  useEffect(()=>{
+    dispatch(fetchRandomDrinks(10)) 
+    const alc = debounce(()=>dispatch(fetchDrinks("alcoholic")),200)
+    const nonAlc = debounce(()=>dispatch(fetchDrinks("nonAlcoholic")),400)
+    alc()
+    nonAlc()
+},[])
 
   return (
     <div className="App" style={{paddingBottom:"50px"}}>

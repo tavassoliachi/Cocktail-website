@@ -11,6 +11,7 @@ import styles from "./styles.module.css";
 import { CircularProgress } from "@mui/material";
 import { auth } from "../../firebase-config";
 import FavDrinks from "./components/FavDrinks";
+import Quiz from "./components/QuizGame/Quiz";
 import { Helmet } from "react-helmet";
 export default function MyDrinks() {
   const dispatch = useDispatch();
@@ -54,7 +55,10 @@ export default function MyDrinks() {
     setEditDialog(true);
   }
   useEffect(() => {
-    !auth.currentUser && navigate("/");
+    setTimeout(() => {
+      !auth.currentUser && navigate("/");
+    }, 1000);
+
   }, [auth.currentUser]);
 
   return (
@@ -117,6 +121,8 @@ export default function MyDrinks() {
           </button>
         )}
       </div>
+      <Quiz/>
+
           <FavDrinks/>
 
       <AddNewDrink addDialog={addDialog} setAddDialog={setAddDialog} />

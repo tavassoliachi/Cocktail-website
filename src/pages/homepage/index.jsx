@@ -26,13 +26,7 @@ export default function Homepage() {
     const randomDrinksLoading = randomDrinks?.loading
 
     const {t,i18n} = useTranslation()
-    useEffect(()=>{
-        dispatch(fetchRandomDrinks(10)) 
-        const alc = debounce(()=>dispatch(fetchDrinks("alcoholic")),200)
-        const nonAlc = debounce(()=>dispatch(fetchDrinks("nonAlcoholic")),400)
-        alc()
-        nonAlc()
-    },[])
+
     const user = useSelector((data)=>data.loginUser.data)
   return <div className={styles.mainCont}>
             <Helmet>

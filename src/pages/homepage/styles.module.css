@@ -321,6 +321,7 @@
   padding-top: 1rem;
   display: flex;
   flex-direction: row;
+  background-color: #06273A;;
 }
 .customSlide img{
   padding-left: 7rem;
@@ -375,6 +376,7 @@
 .steps{
   width:60%;
 }
+
 @media only screen and (max-width: 1200px) {
   .ranIngredients{
     display: none;
