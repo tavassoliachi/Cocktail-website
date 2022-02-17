@@ -108,11 +108,21 @@
   color: white;
   margin-top: 5rem;
 }
+.playBTN{
+  background-color: white;
+  border: 1px solid black;
+  padding: 15px 25px;
+  font-weight: 600;
+  margin:auto
+}
 @media only screen and (max-width: 850px) {
   .questionCont{
       flex-direction: column;
   }
   .question{
+    margin-left: 0;
+  }
+  .questionSubCont{
     margin-left: 0;
   }
 }
