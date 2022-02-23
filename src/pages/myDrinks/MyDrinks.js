@@ -62,7 +62,7 @@ export default function MyDrinks() {
   }, [auth.currentUser]);
 
   return (
-    <div style={{display:"flex",flexDirection:"column"}}>
+    <div style={{display:"flex",flexDirection:"column"}} className={styles.mainCont}>
       <Helmet>
         <title>My Drinks</title>
       </Helmet>

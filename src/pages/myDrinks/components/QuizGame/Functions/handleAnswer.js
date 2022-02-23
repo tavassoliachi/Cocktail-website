@@ -10,7 +10,6 @@ export const handleAnswer = (
   setScore,
   score
 ) => {
-  console.log(e.target)
   if (!ansSelected) {
     el.correct && setScore(score + 1);
     e.target.style.backgroundColor = el.correct ? "green" : "red";
