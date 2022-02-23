@@ -38,7 +38,7 @@ export default function Ingredients({ drink }) {
     keys?.forEach((el) => {
       return ingredients.push(drink[el]);
     });
-    ingredients.length && dispatch(fetchIngredient(ingredients));
+     ingredients.length && dispatch(fetchIngredient(ingredients));
   };
 
 
